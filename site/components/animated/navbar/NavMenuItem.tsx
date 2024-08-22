@@ -47,7 +47,7 @@ const NavMenuItem: React.FC<NavMenuItem> = ({ index, title }) => {
         </motion.div>
       </div>
       <motion.div
-        className="absolute bottom-0 h-[1px] bg-secondary w-screen origin-left"
+        className="absolute bottom-0 h-[2px] bg-secondary w-screen origin-left"
         variants={dividerMotion}
       />
     </motion.li>

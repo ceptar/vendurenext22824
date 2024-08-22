@@ -1,7 +1,11 @@
 import React from 'react';
 import { motion } from "framer-motion";
 
-const Path = (props: React.SVGProps<SVGPathElement>) => (
+// This approach uses explicit typing for motion-specific props
+const Path: React.FC<React.SVGProps<SVGPathElement> & {
+  variants?: any;
+  transition?: any;
+}> = (props) => (
   <motion.path
     fill="transparent"
     strokeWidth="2"
