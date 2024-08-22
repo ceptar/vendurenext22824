@@ -1,17 +1,13 @@
 import React from 'react';
-import { motion } from "framer-motion";
+import { motion, SVGMotionProps } from "framer-motion";
 
-// This approach uses explicit typing for motion-specific props
-const Path: React.FC<React.SVGProps<SVGPathElement> & {
-  variants?: any;
-  transition?: any;
-}> = (props) => (
+const Path: React.FC<Omit<SVGMotionProps<SVGPathElement>, 'onAnimationStart' | 'onAnimationEnd'>> = (props) => (
   <motion.path
     fill="transparent"
     strokeWidth="2"
     stroke="hsl(0, 0%, 18%)"
     strokeLinecap="round"
-    {...props}
+    {...props} // Spread other props
   />
 );
 
