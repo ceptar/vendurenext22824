@@ -1,6 +1,6 @@
 
 .parent {
-    @apply items-center text-pink hover:bg-pink hover:text-primary bg-opacity-50 tracking-[0.2em] uppercase text-4xl sm:text-5xl md:text-6xl;
+    @apply items-center text-pink hover:bg-pink hover:text-primary tracking-[0.2em] uppercase text-4xl sm:text-5xl md:text-6xl;
   }
 
  .child {

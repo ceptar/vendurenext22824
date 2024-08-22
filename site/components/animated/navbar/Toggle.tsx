@@ -1,7 +1,7 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { motion } from "framer-motion";
 
-const Path = (props) => (
+const Path = (props: React.SVGProps<SVGPathElement>) => (
   <motion.path
     fill="transparent"
     strokeWidth="2"
@@ -11,13 +11,13 @@ const Path = (props) => (
   />
 );
 
-export const MenuToggle = ({ toggle }) => {
-  const path1Variants = useMemo(() => ({
+export const MenuToggle = ({ toggle }: { toggle: () => void }) => {
+  const path1Variants = React.useMemo(() => ({
     closed: { d: "M 2 2.5 L 20 2.5" },
     open: { d: "M 3 16.5 L 17 2.5" }
   }), []);
 
-  const path2Variants = useMemo(() => ({
+  const path2Variants = React.useMemo(() => ({
     closed: { d: "M 2 16.346 L 20 16.346" },
     open: { d: "M 3 2.5 L 17 16.346" }
   }), []);
