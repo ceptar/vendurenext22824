@@ -1,0 +1,8 @@
+
+.parent {
+    @apply text-2xl font-bold uppercase tracking-tighter py-4;
+  }
+  
+  .child {
+    @apply text-xl font-bold py-2 ml-4;
+  }
