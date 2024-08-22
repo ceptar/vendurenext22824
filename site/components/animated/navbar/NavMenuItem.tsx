@@ -11,9 +11,10 @@ import {
 interface NavMenuItem {
   index: number;
   title: string;
+  class: string;
 }
 
-const NavMenuItem: React.FC<NavMenuItem> = ({ index, title }) => {
+const NavMenuItem: React.FC<NavMenuItem> = ({ index, title, class: className }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
@@ -26,24 +27,25 @@ const NavMenuItem: React.FC<NavMenuItem> = ({ index, title }) => {
       whileHover="hover"
       onAnimationComplete={() => setIsLoading(false)}
     >
-      <div className="flex items-center relative">
+      <div className="flex items-center justify-center relative">
         <motion.div
           className="mix-blend-difference "
        />
         <motion.span
-          className="w-[4ch] text-xl sm:text-2xl md:text-3xl "
+          className="w-4 text-xl sm:text-2xl md:text-3xl "
           variants={itemContentMotion}
         >
 
           {/* ({index.toLocaleString("en-US", { minimumIntegerDigits: 2 })}) */}
         </motion.span>
-        <motion.div variants={arrowMotion}>
-          <DiscoLightningInner className="w-8 h-8" />
-        </motion.div>
-        <h1 className="uppercase font-logofont tracking-wide text-4xl sm:text-5xl md:text-6xl flex-1 ">
+
+        <h1 className="uppercase font-logofont tracking-wide text-3xl sm:text-4xl md:text-5xl flex ">
           {title}
         </h1>
-
+        <motion.div className=""
+         variants={arrowMotion}>
+          <DiscoLightningInner className="w-8 h-8" />
+        </motion.div>
       </div>
       <motion.div
         className="absolute bottom-0 h-[2px] bg-secondary w-screen origin-left"

@@ -9,14 +9,14 @@ interface TreeNode {
   children?: TreeNode[];
 }
 
-const TreeMenuItem: React.FC<{ node: TreeNode; index: number | string }> = ({ node, index }) => {
+const TreeMenuItem: React.FC<{ node: TreeNode; index: number }> = ({ node, index }) => {
   return (
     <li>
       <NavMenuItem index={index} title={node.name} />
       {node.children && node.children.length > 0 && (
         <motion.ul>
           {node.children.map((child, childIdx) => (
-            <TreeMenuItem key={child.id} node={child} index={`${index}.${childIdx + 1}`} />
+            <TreeMenuItem key={child.id} node={child} index={childIdx + 1} />
           ))}
         </motion.ul>
       )}
