@@ -1,3 +1,4 @@
+import { MenuToggle } from "./Toggle";
 import { motion, useAnimation } from "framer-motion";
 import React, { useEffect } from "react";
 

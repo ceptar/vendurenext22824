@@ -1,18 +1,25 @@
-import React from "react";
-import Link from "next/link";
-import NavMenuToggle from "./NavMenuToggle";
+// import React from "react";
+// import Link from "next/link";
+// import { motion, useCycle } from "framer-motion";
+// import { MenuToggle } from "@components/animated/navbar/Toggle";
 
-interface NavbarProps {
-  menuOpen: boolean;
-  setMenuOpen: (_: boolean) => void;
-}
+// export default function Navbar( ) {
+//   const [isOpen, toggleOpen] = useCycle(false, true);
 
-const Navbar: React.FC<NavbarProps> = ({ menuOpen, setMenuOpen }) => {
-  return (
-    <div className="flex items-center p-2 mr-4 sticky top-0 mix-blend-difference z-[100]">
-      <NavMenuToggle menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-    </div>
-  );
-};
+//   return (
+//     <>
+//     <div className="flex items-center p-2 mr-4 sticky top-0 z-[100]">
 
-export default Navbar;
+//     <motion.nav
+//         initial={false}
+//         animate={isOpen ? "open" : "closed"}
+//         custom="100%"
+//       >
+//         <MenuToggle toggle={() => toggleOpen()} />
+//       </motion.nav>
+
+//  </div>
+//  </>
+//   );
+// };
+

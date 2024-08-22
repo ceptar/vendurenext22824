@@ -26,7 +26,9 @@ const NavMenu = ({ treeData }) => {
   }
 
   return (
-    <motion.nav
+
+
+    <motion.div
       className="absolute h-[calc(screen-80px)] top-[52px] w-screen bg-primary opacity-90 backdrop-blur-md flex flex-col justify-end p-6 z-50"
       initial={{ x: "-100%" }}
       animate={{
@@ -40,7 +42,8 @@ const NavMenu = ({ treeData }) => {
           <TreeMenuItem key={node.id} node={node} index={idx + 1} />
         ))}
       </motion.ul>
-    </motion.nav>
+    </motion.div>
+
   );
 };
 
