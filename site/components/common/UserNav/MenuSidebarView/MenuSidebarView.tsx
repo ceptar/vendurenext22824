@@ -1,38 +1,40 @@
-import Link from 'next/link'
-import s from './MenuSidebarView.module.css'
-import { useUI } from '@components/ui/context'
-import SidebarLayout from '@components/common/SidebarLayout'
-import type { Link as LinkProps } from './index'
+import { useQuery } from '@components/utils/client'; // GraphQL query
+import NavMenu from "@components/animated/navbar/NavMenu";
+import Navbar from "@components/animated/navbar/Navbar";
+import { AnimatePresence } from "framer-motion";
+import { arrayToTree } from '@components/utils/array-to-tree'; // Tree structure utility
+import React, { useState } from "react";
 
-export default function MenuSidebarView({
-  links = [],
-}: {
-  links?: LinkProps[]
-}) {
-  const { closeSidebar } = useUI()
+// Your GraphQL query
+const GET_ALL_COLLECTIONS = /* GraphQL */ `
+  query GetAllCollections {
+    collections {
+      items {
+        id
+        slug
+        name
+        parentId
+      }
+    }
+  }
+`;
+
+export default function MenuSidebarView() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const { data, loading, error } = useQuery(GET_ALL_COLLECTIONS);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
+  // Transform flat collection data into a tree structure
+  const treeData = arrayToTree(data.collections.items);
 
   return (
-    <SidebarLayout handleClose={() => closeSidebar()}>
-      <div className={s.root}>
-        <nav>
-          <ul>
-            <li className={s.item} onClick={() => closeSidebar()}>
-              <Link href="/search">All</Link>
-            </li>
-            {links.map((l: any) => (
-              <li
-                key={l.href}
-                className={s.item}
-                onClick={() => closeSidebar()}
-              >
-                <Link href={l.href}>{l.label}</Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
-    </SidebarLayout>
-  )
+    <section className="relative flex flex-row-reverse">
+      <AnimatePresence>
+        {menuOpen && <NavMenu treeData={treeData} />}
+      </AnimatePresence>
+      <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+    </section>
+  );
 }
-
-MenuSidebarView
