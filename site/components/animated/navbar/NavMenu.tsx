@@ -1,4 +1,5 @@
 import React from "react";
+import s from "./animated-navbar.module.css"; // Import the CSS module
 import { motion } from "framer-motion";
 import { easings } from "@components/utils/animations";
 import NavMenuItem from "./NavMenuItem";
@@ -7,6 +8,8 @@ import NavMenuItem from "./NavMenuItem";
 interface TreeNode {
   id: string | number;
   name: string;
+  isParent: boolean;
+  isChild: boolean;
   children?: TreeNode[];
 }
 
@@ -15,9 +18,11 @@ type NavMenuProps = {
 };
 
 const TreeMenuItem: React.FC<{ node: TreeNode; index: number }> = ({ node, index }) => {
+  const className = node.isParent ? s.parent : node.isChild ? s.child : "";
+  
   return (
-    <div>
-      <NavMenuItem index={index} title={node.name} />
+    <li className={className}>
+      <NavMenuItem index={index} title={node.name} isParent={node.isParent} isChild={node.isChild} />
       {node.children && node.children.length > 0 && (
         <motion.ul>
           {node.children.map((child, childIdx) => (
@@ -25,7 +30,7 @@ const TreeMenuItem: React.FC<{ node: TreeNode; index: number }> = ({ node, index
           ))}
         </motion.ul>
       )}
-    </div>
+    </li>
   );
 };
 
@@ -37,7 +42,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ treeData }) => {
 
   return (
     <motion.div
-      className="absolute h-[calc(screen-80px)] top-[52px] w-screen bg-primary opacity-90 backdrop-blur-md flex flex-col justify-end z-50"
+      className="absolute h-[calc(screen-80px)] top-[52px] pt-24 w-screen bg-primary opacity-90 backdrop-blur-md flex flex-col justify-end z-50"
       initial={{ x: "-100%" }}
       animate={{
         x: 0,

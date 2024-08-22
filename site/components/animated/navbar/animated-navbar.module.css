@@ -1,8 +1,8 @@
 
 .parent {
-    @apply text-2xl font-bold uppercase tracking-tighter py-4;
+    @apply items-center text-pink hover:bg-pink hover:text-primary bg-opacity-50 tracking-[0.2em] uppercase text-4xl sm:text-5xl md:text-6xl;
   }
-  
-  .child {
-    @apply text-xl font-bold py-2 ml-4;
-  }
+
+ .child {
+    @apply uppercase text-primary tracking-wide text-2xl sm:text-3xl md:text-4xl;
+ } 
