@@ -37,7 +37,7 @@ export default function MenuSidebarView() {
   const [isOpen, toggleOpen] = useCycle(true, false);
 
   // Use the CollectionsData interface to type the data returned by useQuery
-  const { data, loading, error } = useQuery<CollectionsData>(GET_ALL_COLLECTIONS);
+  const { data, loading, error } = useQuery(GET_ALL_COLLECTIONS);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
