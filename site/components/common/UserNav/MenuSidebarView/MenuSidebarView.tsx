@@ -27,8 +27,7 @@ export default function MenuSidebarView() {
   if (error) return <p>Error: {error.message}</p>;
 
   // Transform flat collection data into a tree structure
-  const treeData = arrayToTree(data.collections.items);
-
+  const treeData = arrayToTree(data?.collections?.items || []);
   return (
     <motion.nav
     initial={false}
