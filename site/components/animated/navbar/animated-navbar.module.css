@@ -1,8 +1,14 @@
 
 .parent {
-    @apply items-center text-pink hover:bg-pink hover:text-primary tracking-[0.2em] uppercase text-4xl sm:text-5xl md:text-6xl;
-  }
+    @apply items-center tracking-[0.1em] uppercase;
+    
+      font-size: 3rem;
+      line-height: 120%;
+
+    }
+
 
  .child {
-    @apply uppercase text-primary tracking-wide text-2xl sm:text-3xl md:text-4xl;
- } 
+    font-size: 2rem;
+
+   } 

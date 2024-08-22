@@ -52,6 +52,15 @@ module.exports = {
         blue: 'var(--blue)',
         green: 'var(--green)',
         red: 'var(--red)',
+        discopink: 'var(--discopink)',
+        discoteal: 'var(--discoteal)',
+        discopurple: 'var(--discopurple)',
+        discoyellow: 'var(--discoyellow)',
+        discored: 'var(--discored)',
+        discoblue: 'var(--discoblue)',
+        discogray: 'var(--discogray)',
+        discograytwo: 'var(--discograytwo)',
+
       },
       textColor: {
         base: 'var(--text-base)',
