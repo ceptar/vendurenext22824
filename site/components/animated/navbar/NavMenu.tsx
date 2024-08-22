@@ -13,6 +13,10 @@ interface TreeNode {
   children?: TreeNode[];
 }
 
+interface RootNode<T> {
+  children: T[];
+}
+
 type NavMenuProps = {
   treeData: RootNode<TreeNode>;
 };
