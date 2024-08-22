@@ -87,7 +87,7 @@ const SidebarView: React.FC<{
       {sidebarView === 'SHIPPING_VIEW' && <ShippingView />}
       {sidebarView === 'PAYMENT_VIEW' && <PaymentMethodView />}
       {sidebarView === 'CHECKOUT_VIEW' && <CheckoutSidebarView />}
-      {sidebarView === 'MOBILE_MENU_VIEW' && <MenuSidebarView links={links} />}
+      {/* {sidebarView === 'MOBILE_MENU_VIEW' && <MenuSidebarView links={links} />} */}
     </Sidebar>
   )
 }
