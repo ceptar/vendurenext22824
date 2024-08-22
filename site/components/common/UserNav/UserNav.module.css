@@ -3,11 +3,11 @@
 }
 
 .list {
-  @apply flex flex-row items-center justify-items-end h-full;
+  @apply flex flex-row items-center justify-items-end h-full ml-6;
 }
 
 .item {
-  @apply ml-6  flex items-center relative;
+  @apply flex items-center relative;
 }
 
 .item > button {
@@ -40,7 +40,7 @@
 }
 
 .mobileMenu {
-  @apply flex lg:hidden ml-6 text-white;
+  @apply flex hidden ml-6 text-white;
 }
 
 .avatarButton:focus,

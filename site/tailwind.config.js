@@ -5,6 +5,22 @@ module.exports = {
   ],
   safelist: ['outline-none'],
   theme: {
+    fontFamily: {
+      sans: ['fw300', 'sans-serif'], // Replace 'MyFont' with your actual font name
+      normal: ['fw300', 'sans-serif'],
+      inherit: ['fw300', 'sans-serif'],
+      mono: ['fw300', 'sans-serif'],
+      fw100: ['fw100', 'sans-serif'],
+      fw200: ['fw200', 'sans-serif'],
+      fw300: ['fw300', 'sans-serif'],
+      fw400: ['fw400', 'sans-serif'],
+      fw500: ['fw500', 'sans-serif'],
+      fw600: ['fw600', 'sans-serif'],
+      fw700: ['fw700', 'sans-serif'],
+      fw800: ['fw800', 'sans-serif'],
+      fw900: ['fw900', 'sans-serif'],
+      logofont: ['logofont', 'sans-serif'],
+    },
     extend: {
       maxWidth: {
         '8xl': '1920px',

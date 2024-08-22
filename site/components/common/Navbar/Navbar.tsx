@@ -19,7 +19,7 @@ interface NavbarProps {
 
 const Navbar: FC<NavbarProps> = ({ links }) => (
   <NavbarRoot>
-    <Container clean className="mx-auto max-w-8xl pl-6">
+    <Container clean className="mx-auto max-w-8xl">
       <div className={s.nav}>
         <div className="flex items-center flex-1">
           {/* <Link href="/" className={s.logo} aria-label="Logo"> */}
@@ -46,7 +46,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
             <Searchbar />
           </div>
         )} */}
-        <div className="flex items-center justify-end flex-1 space-x-8">
+        <div className="flex items-center justify-end flex-1">
 
           <MenuSidebarView />
           {/* <UserNav /> */}

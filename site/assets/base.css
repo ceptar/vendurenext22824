@@ -1,6 +1,67 @@
+@font-face {
+  font-family: fw100;
+  src: url('/fonts/100.woff2');
+  format: ('woff2');
+  font-display: swap;
+}
+@font-face {
+  font-family: fw200;
+  src: url('/fonts/200.woff2');
+  format: ('woff2');
+  font-display: swap;
+}
+@font-face {
+  font-family: fw300;
+  src: url('/fonts/300.woff2');
+  format: ('woff2');
+  font-display: swap;
+}
+@font-face {
+  font-family: fw400;
+  src: url('/fonts/400.woff2');
+  format: ('woff2');
+  font-display: swap;
+}
+@font-face {
+  font-family: fw500;
+  src: url('/fonts/500.woff2');
+  format: ('woff2');
+  font-display: swap;
+}
+@font-face {
+  font-family: fw600;
+  src: url('/fonts/600.woff2');
+  format: ('woff2');
+  font-display: swap;
+}
+@font-face {
+  font-family: fw700;
+  src: url('/fonts/700.woff2');
+  format: ('woff2');
+  font-display: swap;
+}
+@font-face {
+  font-family: fw800;
+  src: url('/fonts/800.woff2');
+  format: ('woff2');
+  font-display: swap;
+}
+@font-face {
+  font-family: fw900;
+  src: url('/fonts/900.woff2');
+  format: ('woff2');
+  font-display: swap;
+}
+@font-face {
+  font-family: logofont;
+  src: url('/fonts/logofont.woff2');
+  format: ('woff2');
+  font-display: swap;
+}
+
 :root {
-  --primary: #ffffff;
-  --primary-2: #f1f3f5;
+  --primary: #f7f7f4;
+  --primary-2: #f7f7f4;
   --secondary: #000000;
   --secondary-2: #111;
   --selection: var(--cyan);
@@ -10,15 +71,15 @@
   --hover: rgba(0, 0, 0, 0.075);
   --hover-1: rgba(0, 0, 0, 0.15);
   --hover-2: rgba(0, 0, 0, 0.25);
-  --cyan: #22b8cf;
-  --green: #37b679;
-  --red: #da3c3c;
-  --purple: #f81ce5;
-  --blue: #0070f3;
-  --pink: #ff0080;
+  --cyan: #56c9de;
+  --green: #4b8d6b;
+  --red: #c84539;
+  --purple: #9e23d3;
+  --blue: #3c71d4;
+  --pink: #ff006a;
   --pink-light: #ff379c;
-  --magenta: #eb367f;
-  --violet: #7928ca;
+  --magenta: #cb6990;
+  --violet: #692ba7d0;
   --violet-dark: #4c2889;
   --accent-0: #fff;
   --accent-1: #fafafa;
@@ -30,15 +91,14 @@
   --accent-7: #333333;
   --accent-8: #111111;
   --accent-9: #000;
-  --font-sans: -apple-system, system-ui, BlinkMacSystemFont, 'Helvetica Neue',
-    'Helvetica', sans-serif;
+  --font-sans: fw300, sans-serif;
 }
 
 [data-theme='dark'] {
   --primary: #000000;
   --primary-2: #111;
-  --secondary: #ffffff;
-  --secondary-2: #f1f3f5;
+  --secondary: #f7f7f4;
+  --secondary-2: #f7f7f4;
   --hover: rgba(255, 255, 255, 0.075);
   --hover-1: rgba(255, 255, 255, 0.15);
   --hover-2: rgba(255, 255, 255, 0.25);
