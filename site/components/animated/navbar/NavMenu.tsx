@@ -22,7 +22,7 @@ const TreeMenuItem = ({ node, index }) => {
 
 const NavMenu = ({ treeData }) => {
   if (!treeData || !Array.isArray(treeData.children)) {
-    return null;  // Handle empty or malformed treeData
+    return null;  // Handle cases where treeData is not structured as expected
   }
 
   return (
@@ -44,4 +44,4 @@ const NavMenu = ({ treeData }) => {
   );
 };
 
-export default NavMenu;
+export default NavMenu
