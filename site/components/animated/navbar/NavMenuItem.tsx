@@ -11,10 +11,9 @@ import {
 interface NavMenuItem {
   index: number;
   title: string;
-  class: string;
 }
 
-const NavMenuItem: React.FC<NavMenuItem> = ({ index, title, class: className }) => {
+const NavMenuItem: React.FC<NavMenuItem> = ({ index, title }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
