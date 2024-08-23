@@ -1,26 +1,28 @@
 export type HasParent = { id: string; parentId: string | null }
+// Adjusted types
 export type TreeNode<T extends HasParent> = T & {
-  children: Array<TreeNode<T>>
-  isParent?: boolean // Mark if it's a parent node
-  isChild?: boolean // Mark if it's a child node
-}
+  children: Array<TreeNode<T>>;
+  isParent: boolean; // Make these properties required
+  isChild: boolean;
+};
+
 export type RootNode<T extends HasParent> = {
-  id?: string
-  children: Array<TreeNode<T>>
-}
+  id?: string;
+  children: Array<TreeNode<T>>;
+};
 
 export function arrayToTree<T extends HasParent>(nodes: T[]): RootNode<T> {
-  const topLevelNodes: Array<TreeNode<T>> = []
-  const mappedArr: { [id: string]: TreeNode<T> } = {}
+  const topLevelNodes: Array<TreeNode<T>> = [];
+  const mappedArr: { [id: string]: TreeNode<T> } = {};
 
-  // First map the nodes of the array to an object -> create a hash table.
+  // Map nodes to a hash table
   for (const node of nodes) {
     mappedArr[node.id] = {
       ...(node as any),
       children: [],
-      isParent: false,
-      isChild: false,
-    }
+      isParent: false, // Initialize as false
+      isChild: false, // Initialize as false
+    };
   }
 
   for (const node of nodes) {

@@ -1,10 +1,10 @@
 import React from "react";
-import s from "./animated-navbar.module.css"; // Import the CSS module
+import s from "./animated-navbar.module.css";
 import { motion } from "framer-motion";
 import { easings } from "@components/utils/animations";
 import NavMenuItem from "./NavMenuItem";
 
-// Use the TreeNode and RootNode types
+// Adjusted TreeNode interface to match the usage
 interface TreeNode {
   id: string | number;
   name: string;
@@ -23,7 +23,9 @@ type NavMenuProps = {
 
 const TreeMenuItem: React.FC<{ node: TreeNode; index: number }> = ({ node, index }) => {
   const className = node.isParent ? s.parent : node.isChild ? s.child : "";
-  
+
+  console.log(`Rendering TreeMenuItem: ${node.name}`, node); // Logging each node
+
   return (
     <div className={className}>
       <NavMenuItem index={index} title={node.name} />
@@ -38,11 +40,13 @@ const TreeMenuItem: React.FC<{ node: TreeNode; index: number }> = ({ node, index
   );
 };
 
-// Explicitly type the props in NavMenu
 const NavMenu: React.FC<NavMenuProps> = ({ treeData }) => {
   if (!treeData || !Array.isArray(treeData.children)) {
-    return null; // Handle cases where treeData is not structured as expected
+    console.error("Invalid treeData:", treeData);
+    return null;
   }
+
+  console.log("Rendering NavMenu with treeData:", treeData); // Log the entire tree data
 
   return (
     <motion.div
