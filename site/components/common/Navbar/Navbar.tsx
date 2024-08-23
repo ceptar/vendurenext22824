@@ -23,7 +23,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
       <div className={s.nav}>
         <div className="flex items-center flex-1">
           {/* <Link href="/" className={s.logo} aria-label="Logo"> */}
-          < UserNav />
+          <UserNav />
           {/* </Link> */}
           {/* <nav className={s.navMenu}>
             <Link href="/search" className={s.link}>
@@ -37,9 +37,9 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
           </nav> */}
         </div>
         <div className="flex items-center flex-1 justify-center">
-        <Link href="/"  aria-label="Logo">
-        <DiscoLogo className="max-h-12 w-auto" />
-        </Link>
+          <Link href="/" aria-label="Logo">
+            <DiscoLogo className="max-h-12 w-auto" />
+          </Link>
         </div>
         {/* {process.env.COMMERCE_SEARCH_ENABLED && (
           <div className="justify-center flex-1 hidden lg:flex">
@@ -47,7 +47,6 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
           </div>
         )} */}
         <div className="flex items-center justify-end flex-1">
-
           <MenuSidebarView />
           {/* <UserNav /> */}
         </div>

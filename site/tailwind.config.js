@@ -60,7 +60,6 @@ module.exports = {
         discoblue: 'var(--discoblue)',
         discogray: 'var(--discogray)',
         discograytwo: 'var(--discograytwo)',
-
       },
       textColor: {
         base: 'var(--text-base)',

@@ -1,14 +1,9 @@
-
 .parent {
-    @apply items-center tracking-[0.1em] uppercase;
-    
-      font-size: 3rem;
-      line-height: 120%;
+  @apply hover:opacity-70;
+  font-size: 3rem;
+}
 
-    }
-
-
- .child {
-    font-size: 2rem;
-
-   } 
+.child {
+  @apply ml-0;
+  font-size: 2rem;
+}
