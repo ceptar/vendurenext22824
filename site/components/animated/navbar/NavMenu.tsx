@@ -38,9 +38,9 @@ const TreeMenuItem: React.FC<{ node: TreeNode; index: number }> = ({
       {node.children && node.children.length > 0 && (
         <motion.ul >
           {node.children.map((child, childIdx) => (
-          <a key={childIdx} href={`/collection/${child.slug}` }><div className={className}>
+          <a key={childIdx} href={`/collection/${child.slug}`} className={className}>
             <TreeMenuItem key={child.id} node={child} index={childIdx + 1} />
-            </div></a>
+          </a>
           ))}
         </motion.ul>
       )}
