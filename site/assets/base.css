@@ -60,11 +60,11 @@
 }
 
 :root {
-  --primary-nav: 247, 247, 244;
-  --primary: #f7f7f4;
+  --bg-opacity: 1;
+  --primary: rgb(247, 247, 244);
   --primary-2: #f7f7f4;
   --secondary: #111;
-  --secondary-2: #111;
+  --secondary-2: rgb(17, 17, 17);
   --selection: var(--cyan);
   --text-base: #000000;
   --text-primary: #000000;
@@ -104,7 +104,6 @@
 }
 
 [data-theme='dark'] {
-  --primary-nav: 17, 17, 17;
   --primary: #111111;
   --primary-2: #111111;
   --secondary: #f7f7f4;
