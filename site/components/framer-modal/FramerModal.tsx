@@ -3,6 +3,15 @@ import FramerModalToggle from './FramerModalToggle'
 import { AnimatePresence, motion } from 'framer-motion'
 import FramerModalOverlay from './FramerModalOverlay'
 
+// Define the expected props interface
+interface FramerModalProps {
+  menuOpen: boolean
+  setMenuOpen: (open: boolean) => void
+  results: any // Replace 'any' with the correct type if known
+  filterIds: string[]
+  setFilterIds: (ids: string[]) => void
+}
+
 const FramerModal: React.FC<FramerModalProps> = ({
   menuOpen,
   setMenuOpen,

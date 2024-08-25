@@ -9,6 +9,11 @@ const isSwell = provider === '@vercel/commerce-swell'
 const isVendure = provider === '@vercel/commerce-vendure'
 
 module.exports = withCommerceConfig({
+  swcMinify: true,
+  eslint: {
+    // Disabling on production builds because we're running checks on PRs via GitHub Actions.
+    ignoreDuringBuilds: true
+  },
   commerce,
   i18n: {
     locales: ['en-US', 'es'],

@@ -51,12 +51,33 @@ const SEARCH_PRODUCTS = /* GraphQL */ `
     }
   }
 `
+// Define the TypeScript types for the GraphQL query results
+interface ProductAsset {
+  id: string
+  preview: string
+}
 
-export default function Slug() {
+interface PriceWithTax {
+  value?: number
+  min?: number
+  max?: number
+}
+
+interface SearchItem {
+  productId: string
+  productName: string
+  slug: string
+  productAsset?: ProductAsset
+  priceWithTax?: PriceWithTax
+  currencyCode: string
+}
+
+export function Slug() {
   const [value, setValue] = React.useState('')
   const [filterIds, setFilterIds] = React.useState<string[]>([])
   const [menuOpen, setMenuOpen] = React.useState(false)
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false)
+
   const router = useRouter()
   const { slug } = router.query
 
@@ -67,7 +88,7 @@ export default function Slug() {
     {
       input: {
         term,
-        collectionSlug: slug,
+        collectionSlug: slug as string,
         groupByProduct: true,
         skip: 0,
         take: 10,
@@ -80,12 +101,8 @@ export default function Slug() {
   if (loading) return <p>Loading...</p>
   if (error) return <p>Error: {error.message}</p>
 
-  const handleDrawerOpen = () => setIsDrawerOpen(true)
-  const handleDrawerClose = () => setIsDrawerOpen(false)
-
   return (
-    <div className="w-full">
-    <div className="relative my-[5rem] h-full">
+    <div className="absolute top-[5rem] h-full">
       <FramerModal
         menuOpen={menuOpen}
         setMenuOpen={setMenuOpen}
@@ -95,9 +112,16 @@ export default function Slug() {
       />
 
       <div className="relative columns-1 gap-4 sm:columns-2 md:columns-3 xl:columns-4 [&>img:not(:first-child)]:mt-4">
-        {data.search.items.map(
-          ({ productName, slug, priceWithTax, currencyCode, productAsset }) => (
-            <div className="relative break-inside-avoid flex flex-col" key={slug}>
+      {data.search.items.map(
+          ({
+            productId,
+            productName,
+            slug,
+            priceWithTax,
+            currencyCode,
+            productAsset,
+          }: SearchItem) => (
+              <div className="relative break-inside-avoid flex flex-col" key={slug}>
               <Link
                 className="flex-nowrap"
                 prefetch={false}
@@ -127,7 +151,6 @@ export default function Slug() {
         )}
       </div>
       </div>
-    </div>
   )
 }
   

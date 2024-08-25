@@ -1,10 +1,16 @@
 import { motion } from 'framer-motion'
 import React from 'react'
 import { FacetValueFilters } from '../facet-filter/FacetValueFilters'
-
 import { easings } from '@components/utils/animations'
 
-const FramerModalOverlay = ({ results, filterIds, setFilterIds }) => {
+// Define the types for the props
+interface FramerModalOverlayProps {
+  results: any // Replace 'any' with the correct type if known
+  filterIds: string[]
+  setFilterIds: (ids: string[]) => void
+}
+
+const FramerModalOverlay: React.FC<FramerModalOverlayProps> = ({ results, filterIds, setFilterIds }) => {
   // const { data } = results;
 
   return (

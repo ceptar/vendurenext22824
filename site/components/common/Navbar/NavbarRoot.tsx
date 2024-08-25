@@ -1,12 +1,12 @@
 import { FC, useState, useEffect, ReactNode } from 'react'
 import throttle from 'lodash.throttle'
 import cn from 'clsx'
-import { motion, useAnimation } from 'framer-motion'
+import { motion } from 'framer-motion'
 import s from './Navbar.module.css'
 
 const NavbarRoot: FC<{ children?: ReactNode }> = ({ children }) => {
   const [scrollY, setScrollY] = useState(0)
-  const controls = useAnimation()
+  const [bgOpacity, setBgOpacity] = useState(0) // State for background opacity
 
   useEffect(() => {
     const handleScroll = throttle(() => {
@@ -21,17 +21,16 @@ const NavbarRoot: FC<{ children?: ReactNode }> = ({ children }) => {
   }, [])
 
   useEffect(() => {
-    // Animate background opacity based on scroll position
-    const bgOpacity = scrollY < 48 ? scrollY / 48 : 1
-    controls.start({ '--bg-opacity': bgOpacity }) // Adjust the opacity variable based on scroll position
-  }, [scrollY, controls])
+    // Calculate and set background opacity based on scroll position
+    const opacity = scrollY < 48 ? scrollY / 48 : 1
+    setBgOpacity(opacity)
+  }, [scrollY])
 
   return (
     <motion.div
       className={cn(s.root)}
-      style={{ '--bg-opacity': 0 }} // Start with transparent background
-      animate={controls}
-      initial={{ '--bg-opacity': 0 }}
+      style={{ '--bg-opacity': bgOpacity } as React.CSSProperties} // Set the custom CSS variable
+      initial={{ backgroundColor: 'rgba(var(--primary-nav), 0)' }} // Initial style
       transition={{ duration: 0.2 }} // Smooth transition
     >
       {children}
