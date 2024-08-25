@@ -10,6 +10,7 @@
     "prettier-fix": "prettier --write ."
   },
   "devDependencies": {
+    "@swc/wasm": "1.2",
     "husky": "^8.0.1",
     "prettier": "^2.7.1",
     "turbo": "^1.4.6",

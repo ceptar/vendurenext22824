@@ -104,8 +104,8 @@ export default function Slug() {
         setFilterIds={setFilterIds}
       />
 
-      <div className="columns-1 gap-4 sm:columns-2 md:columns-3 xl:columns-4 [&>img:not(:first-child)]:mt-4">
-      {data.search.items.map(
+<div className="columns-1 gap-4 sm:columns-2 md:columns-3 xl:columns-4 [&>img:not(:first-child)]:mt-4">
+{data.search.items.map(
           ({
             productId,
             productName,
@@ -114,7 +114,7 @@ export default function Slug() {
             currencyCode,
             productAsset,
           }: SearchItem) => (           
- <div className="break-inside-avoid flex flex-col" key={slug}>
+            <div className="break-inside-avoid flex flex-col" key={slug}>
               <Link
                 className="flex-nowrap"
                 prefetch={false}
