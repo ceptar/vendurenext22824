@@ -52,7 +52,7 @@ const SEARCH_PRODUCTS = /* GraphQL */ `
   }
 `
 
-export default function slug() {
+export default function Slug() {
   const [value, setValue] = React.useState('')
   const [filterIds, setFilterIds] = React.useState<string[]>([])
   const [menuOpen, setMenuOpen] = React.useState(false)
@@ -131,5 +131,5 @@ export default function slug() {
   )
 }
   
-slug.Layout = Layout
+Slug.Layout = Layout
   
