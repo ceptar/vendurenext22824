@@ -43,6 +43,25 @@ const SEARCH_PRODUCTS = /* GraphQL */ `
     }
   }
 `
+interface ProductAsset {
+  id: string
+  preview: string
+}
+
+interface PriceWithTax {
+  value?: number
+  min?: number
+  max?: number
+}
+
+interface SearchItem {
+  productId: string
+  productName: string
+  slug: string
+  productAsset?: ProductAsset
+  priceWithTax?: PriceWithTax
+  currencyCode: string
+}
 
 export default function Slug() {
   const [value, setValue] = React.useState('')
@@ -86,9 +105,16 @@ export default function Slug() {
       />
 
       <div className="columns-1 gap-4 sm:columns-2 md:columns-3 xl:columns-4 [&>img:not(:first-child)]:mt-4">
-        {data.search.items.map(
-          ({ productName, slug, priceWithTax, currencyCode, productAsset }) => (
-            <div className="break-inside-avoid flex flex-col" key={slug}>
+      {data.search.items.map(
+          ({
+            productId,
+            productName,
+            slug,
+            priceWithTax,
+            currencyCode,
+            productAsset,
+          }: SearchItem) => (           
+ <div className="break-inside-avoid flex flex-col" key={slug}>
               <Link
                 className="flex-nowrap"
                 prefetch={false}
