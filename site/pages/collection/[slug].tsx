@@ -1,11 +1,3 @@
-import type {
-    GetStaticPathsContext,
-    GetStaticPropsContext,
-    InferGetStaticPropsType,
-  } from 'next'
-
-  import commerce from '@lib/api/commerce'
-
 import * as React from 'react'
 import { Layout } from '@components/common'
 import Link from 'next/link'
@@ -51,33 +43,12 @@ const SEARCH_PRODUCTS = /* GraphQL */ `
     }
   }
 `
-// Define the TypeScript types for the GraphQL query results
-interface ProductAsset {
-  id: string
-  preview: string
-}
 
-interface PriceWithTax {
-  value?: number
-  min?: number
-  max?: number
-}
-
-interface SearchItem {
-  productId: string
-  productName: string
-  slug: string
-  productAsset?: ProductAsset
-  priceWithTax?: PriceWithTax
-  currencyCode: string
-}
-
-export function Slug() {
+export default function Slug() {
   const [value, setValue] = React.useState('')
   const [filterIds, setFilterIds] = React.useState<string[]>([])
   const [menuOpen, setMenuOpen] = React.useState(false)
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false)
-
   const router = useRouter()
   const { slug } = router.query
 
@@ -88,7 +59,7 @@ export function Slug() {
     {
       input: {
         term,
-        collectionSlug: slug as string,
+        collectionSlug: slug,
         groupByProduct: true,
         skip: 0,
         take: 10,
@@ -101,6 +72,9 @@ export function Slug() {
   if (loading) return <p>Loading...</p>
   if (error) return <p>Error: {error.message}</p>
 
+  const handleDrawerOpen = () => setIsDrawerOpen(true)
+  const handleDrawerClose = () => setIsDrawerOpen(false)
+
   return (
     <div className="absolute top-[5rem] h-full">
       <FramerModal
@@ -111,21 +85,14 @@ export function Slug() {
         setFilterIds={setFilterIds}
       />
 
-      <div className="relative columns-1 gap-4 sm:columns-2 md:columns-3 xl:columns-4 [&>img:not(:first-child)]:mt-4">
-      {data.search.items.map(
-          ({
-            productId,
-            productName,
-            slug,
-            priceWithTax,
-            currencyCode,
-            productAsset,
-          }: SearchItem) => (
-              <div className="relative break-inside-avoid flex flex-col" key={slug}>
+      <div className="columns-1 gap-4 sm:columns-2 md:columns-3 xl:columns-4 [&>img:not(:first-child)]:mt-4">
+        {data.search.items.map(
+          ({ productName, slug, priceWithTax, currencyCode, productAsset }) => (
+            <div className="break-inside-avoid flex flex-col" key={slug}>
               <Link
                 className="flex-nowrap"
                 prefetch={false}
-                href={`/product/${slug}`}
+                href={`/products/${slug}`}
               >
                 <img
                   className="object-cover"
@@ -133,7 +100,7 @@ export function Slug() {
                   src={productAsset?.preview + '?preset=full'}
                 />
                 <div className="relative w-full mx-auto bottom-0 left-0">
-                  <div className="text-center absolute bottom-0 left-0 w-fit h-fit bg-primary text-primary text-md p-1 font-fw300">
+                  <div className="text-center absolute bottom-0 left-0 w-fit h-fit bg-secondary text-secondary text-md p-1 font-fw300">
                     {priceWithTax?.value
                       ? formatCurrency(priceWithTax.value, currencyCode)
                       : priceWithTax?.min &&
@@ -142,7 +109,7 @@ export function Slug() {
                       : 'Price N/A'}
                   </div>
                 </div>
-                <div className="text-xl p-1 text-primary uppercase tracking-wider font-fw300 whitespace-nowrap overflow-hidden">
+                <div className="text-xl p-1 text-discogray uppercase tracking-wider font-fw300 whitespace-nowrap overflow-hidden">
                   {productName}
                 </div>
               </Link>
@@ -150,9 +117,8 @@ export function Slug() {
           )
         )}
       </div>
-      </div>
+    </div>
   )
 }
-  
+
 Slug.Layout = Layout
-  
