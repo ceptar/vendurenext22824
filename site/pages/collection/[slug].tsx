@@ -118,7 +118,7 @@ export default function Slug() {
               <Link
                 className="flex-nowrap"
                 prefetch={false}
-                href={`/products/${slug}`}
+                href={`/product/${slug}`}
               >
                 <img
                   className="object-cover"
