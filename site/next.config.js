@@ -16,6 +16,7 @@ module.exports = withCommerceConfig({
   },
   images: {
     domains: ['discobabes.store'],
+    unoptimized: true,
   },
   rewrites() {
     return [

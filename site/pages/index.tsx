@@ -2,6 +2,7 @@ import commerce from '@lib/api/commerce'
 import { Layout } from '@components/common'
 import { ProductCard } from '@components/product'
 import { Grid, Marquee, Hero } from '@components/ui'
+// todo: remove comment
 // import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 
@@ -40,6 +41,26 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
+      <div className="bg-hero" aria-label="[hero1]">
+        <div className="relative h-[100vh] flex justify-end sm:justify-start items-end px-[0.8rem]">
+          <div className="mb-32 mr-auto sm:w-full ">
+            <div className="pr-[1.6rem] w-[80vw] md:w-[calc(50vw-0.8rem)]">
+              <div className="filter p-[0.8rem] mix-blend-lighten border-[1px] border-secondary backdrop-blur-[4px]">
+                <div className="filter p-[0.8rem] bg-primary bg-opacity-100 mix-blend-lighten border-[1px] border-secondary backdrop-blur-[4px]">
+                  <span className="font-fw300 tracking-[0.08em] uppercase text-4xl sm:text-5xl lg:text-6xl xl:text-7xl">
+                    <p className="py-1">life's too short</p>
+                    <p>to wear</p>
+                    <p className="py-1">boring jewelry</p>
+                  </span>
+                  <div className="flex flex-row-reverse font-fw300 tracking-[0.25em] uppercase text-2xl sm:text-4xl lg:text-5xl xl:text-7xl"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="w-[100vw] h-[calc(100vh-5rem)] relative"></div>
+
       <Grid variant="filled">
         {products.slice(0, 3).map((product: any, i: number) => (
           <ProductCard
@@ -70,8 +91,8 @@ export default function Home({
             product={product}
             imgProps={{
               alt: product.name,
-              width: i === 1 ? 1080 : 540,
-              height: i === 1 ? 1080 : 540,
+              width: i === 0 ? 1080 : 540,
+              height: i === 0 ? 1080 : 540,
             }}
           />
         ))}
@@ -81,6 +102,7 @@ export default function Home({
           <ProductCard key={product.id} product={product} variant="slim" />
         ))}
       </Marquee>
+      {/* <CollectionTree /> */}
       {/* <HomeAllProductsGrid
         newestProducts={products}
         categories={categories}

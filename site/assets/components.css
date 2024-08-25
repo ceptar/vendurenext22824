@@ -1,3 +1,14 @@
 .fit {
   min-height: calc(100vh - 88px);
 }
+
+.bg-hero {
+  background-image: url('~/public/banner4fin.webp');
+  background-size: cover;
+  background-position: right center;
+  height: 100vh;
+  width: 100vw;
+  z-index: 10;
+  position: absolute;
+  top: 0;
+}
