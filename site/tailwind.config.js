@@ -78,6 +78,7 @@ module.exports = {
       scale: {
         120: '1.2',
       },
+      bgOpacity: 'var(--bg-opacity)',
     },
   },
 }
