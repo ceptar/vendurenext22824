@@ -1,6 +1,7 @@
 .root {
   @apply sticky top-0 bg-primary z-40 transition-all duration-150;
-  height: 80px;
+  background-color: rgba(var(--primary-nav), var(--bg-opacity, 0));
+  transition: background-color 0.2s ease;
 }
 
 .nav {

@@ -60,9 +60,10 @@
 }
 
 :root {
+  --primary-nav: 247, 247, 244;
   --primary: #f7f7f4;
   --primary-2: #f7f7f4;
-  --secondary: #000000;
+  --secondary: #111;
   --secondary-2: #111;
   --selection: var(--cyan);
   --text-base: #000000;
@@ -103,8 +104,9 @@
 }
 
 [data-theme='dark'] {
-  --primary: #000000;
-  --primary-2: #111;
+  --primary-nav: 17, 17, 17;
+  --primary: #111111;
+  --primary-2: #111111;
   --secondary: #f7f7f4;
   --secondary-2: #f7f7f4;
   --hover: rgba(255, 255, 255, 0.075);

@@ -22,6 +22,7 @@
   "packageManager": "pnpm@7.5.0",
   "dependencies": {
     "framer-motion": "10.15.0",
-    "pnpm": "^9.7.1"
+    "pnpm": "^9.7.1",
+    "use-debounce": "9.0.4"
   }
 }
