@@ -1,9 +1,10 @@
 import commerce from '@lib/api/commerce'
+import { GET_COLLECTION_PRODUCTS } from '@lib/queries'
+import { query } from '@components/utils/client'
 import { Layout } from '@components/common'
 import { ProductCard } from '@components/product'
 import { Grid, Marquee, Hero } from '@components/ui'
-// todo: remove comment
-// import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
+import Carousel from '@components/common/Carousel/Carousel'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 
 export async function getStaticProps({
@@ -12,15 +13,20 @@ export async function getStaticProps({
   locales,
 }: GetStaticPropsContext) {
   const config = { locale, locales }
+
+  // Fetch products (these could be general products)
   const productsPromise = commerce.getAllProducts({
     variables: { first: 6 },
     config,
     preview,
-    // Saleor provider only
     ...({ featured: true } as any),
   })
+
+
+  // Fetch other site information
   const pagesPromise = commerce.getAllPages({ config, preview })
   const siteInfoPromise = commerce.getSiteInfo({ config, preview })
+
   const { products } = await productsPromise
   const { pages } = await pagesPromise
   const { categories, brands } = await siteInfoPromise
@@ -28,6 +34,7 @@ export async function getStaticProps({
   return {
     props: {
       products,
+      featured: true, // Pass the featured items
       categories,
       brands,
       pages,
@@ -61,43 +68,43 @@ export default function Home({
       </div>
       <div className="w-[100vw] h-[calc(100vh-5rem)] relative"></div>
 
-      <Grid variant="filled">
+      <Grid className="mt-[5rem]" variant="default">
         {products.slice(0, 3).map((product: any, i: number) => (
           <ProductCard
             key={product.id}
             product={product}
             imgProps={{
               alt: product.name,
-              width: i === 0 ? 1080 : 540,
-              height: i === 0 ? 1080 : 540,
+              width: i === 0 ? 734 : 365,
+              height: i === 0 ? 1322 : 660,
               priority: true,
             }}
           />
         ))}
       </Grid>
-      <Marquee variant="secondary">
+      <Marquee className="mt-[5rem]" variant="secondary">
         {products.slice(0, 3).map((product: any, i: number) => (
           <ProductCard key={product.id} product={product} variant="slim" />
         ))}
       </Marquee>
-      <Hero
+      <Hero className="mt-[5rem]" 
         headline=" Dessert dragée halvah croissant."
         description="Cupcake ipsum dolor sit amet lemon drops pastry cotton candy. Sweet carrot cake macaroon bonbon croissant fruitcake jujubes macaroon oat cake. Soufflé bonbon caramels jelly beans. Tiramisu sweet roll cheesecake pie carrot cake. "
       />
-      <Grid layout="B" variant="filled">
+      <Grid className="mt-[5rem]" layout="B" variant="filled">
         {products.slice(0, 3).map((product: any, i: number) => (
           <ProductCard
             key={product.id}
             product={product}
             imgProps={{
               alt: product.name,
-              width: i === 0 ? 1080 : 540,
-              height: i === 0 ? 1080 : 540,
+              width: i === 0 ? 365 : 734,
+              height: i === 0 ? 660 :1322,
             }}
           />
         ))}
       </Grid>
-      <Marquee>
+      <Marquee className="mt-[5rem]" >
         {products.slice(3).map((product: any, i: number) => (
           <ProductCard key={product.id} product={product} variant="slim" />
         ))}

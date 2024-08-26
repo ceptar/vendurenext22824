@@ -1,7 +1,8 @@
 import React from 'react'
+export const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 // VENDURESHOPAPI
-const API_URL = '/vendure-shop-api' || 'https://discobabes.store/shop-api'
+const API_URL = `${baseURL}/vendure-shop-api` || 'https://discobabes.store/shop-api'
 
 let languageCode: string | undefined
 let channelToken: string | undefined

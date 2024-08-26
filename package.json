@@ -25,6 +25,7 @@
   "dependencies": {
     "framer-motion": "10.15.0",
     "pnpm": "^9.7.1",
+    "popmotion": "11.0.5",
     "use-debounce": "9.0.4"
   }
 }
