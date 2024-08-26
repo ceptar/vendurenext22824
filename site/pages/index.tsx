@@ -4,7 +4,6 @@ import { query } from '@components/utils/client'
 import { Layout } from '@components/common'
 import { ProductCard } from '@components/product'
 import { Grid, Marquee, Hero } from '@components/ui'
-import Carousel from '@components/common/Carousel/Carousel'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 
 export async function getStaticProps({
