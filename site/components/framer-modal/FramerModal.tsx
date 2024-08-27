@@ -31,7 +31,7 @@ const FramerModal: React.FC<FramerModalProps> = ({
         )}
       </AnimatePresence>
 
-      <div className="p-1 mix-blend-difference z-[100] fixed bottom-0 right-0 mr-4 mb-8 ">
+      <div className="mix-blend-difference z-[100] fixed bottom-0 right-0 mr-4 mb-8 ">
         <FramerModalToggle menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       </div>
     </div>
