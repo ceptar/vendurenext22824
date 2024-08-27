@@ -39,17 +39,17 @@ export function FacetValueFilters(props: {
   }, {} as { [key: string]: FacetValueResult[] })
 
   return (
-    <div style={{ marginTop: '10px' }}>
+    <div style={{ marginTop: '8px' }}>
       {results.length > 0 ? (
         Object.keys(groupedFacets).map((group) => (
-          <div key={group} style={{ marginBottom: '16px' }}>
-            <h4 style={{ marginBottom: '8px' }}>{group}</h4>{' '}
+          <div key={group} style={{ marginBottom: '8px' }}>
+            <h4 style={{ marginBottom: '4px' }}>{group}</h4>{' '}
             {/* Group heading */}
             <div
               style={{
                 display: 'flex',
                 flexWrap: 'wrap',
-                gap: '8px',
+                gap: '4px',
               }}
             >
               {groupedFacets[group].map((f) => (
@@ -60,9 +60,9 @@ export function FacetValueFilters(props: {
                     cursor: 'pointer',
                     border: checkedFacets.includes(f.facetValue.id)
                       ? '2px solid #007BFF'
-                      : '1px solid #ccc',
-                    borderRadius: '20px',
-                    padding: '8px 16px',
+                      : '2px solid #ccc',
+                    borderRadius: '4px',
+                    padding: '2px 4px',
                     backgroundColor: checkedFacets.includes(f.facetValue.id)
                       ? '#E0F7FF'
                       : '#f5f5f5',
@@ -71,7 +71,7 @@ export function FacetValueFilters(props: {
                       : '#333',
                     fontWeight: checkedFacets.includes(f.facetValue.id)
                       ? '600'
-                      : 'normal',
+                      : '300',
                     transition: 'all 0.2s ease',
                   }}
                 >

@@ -60,3 +60,40 @@ export const GET_COLLECTION_PRODUCTS = /* GraphQL */ `
     }
   }
 `;
+
+export const SEARCH_PRODUCTS = /* GraphQL */ `
+  query SearchProducts($input: SearchInput!) {
+    search(input: $input) {
+      totalItems
+      facetValues {
+        count
+        facetValue {
+          id
+          name
+          facet {
+            id
+            name
+          }
+        }
+      }
+      items {
+        productName
+        slug
+        productAsset {
+          id
+          preview
+        }
+        priceWithTax {
+          ... on SinglePrice {
+            value
+          }
+          ... on PriceRange {
+            min
+            max
+          }
+        }
+        currencyCode
+      }
+    }
+  }
+`;

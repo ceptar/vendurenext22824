@@ -1,7 +1,7 @@
 import random from 'lodash.random'
 
 export function getRandomPairOfColors() {
-  const colors = ['#37B679', '#DA3C3C', '#3291FF', '#7928CA', '#79FFE1']
+  const colors = ['var(--discoteal)', 'var(--discopink)', 'var(--discoblue)', 'var(--discopurple)', 'var(--discoyellow)']
   const getRandomIdx = () => random(0, colors.length - 1)
   let idx = getRandomIdx()
   let idx2 = getRandomIdx()

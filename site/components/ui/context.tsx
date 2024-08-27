@@ -8,6 +8,7 @@ export interface State {
   sidebarView: string
   modalView: string
   userAvatar: string
+  enableSystem: boolean
 }
 
 const initialState = {
@@ -17,6 +18,7 @@ const initialState = {
   modalView: 'LOGIN_VIEW',
   sidebarView: 'CART_VIEW',
   userAvatar: '',
+  enableSystem: false,
 }
 
 type Action =
