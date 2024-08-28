@@ -20,7 +20,7 @@ module.exports = withCommerceConfig({
     defaultLocale: 'en-US',
   },
   images: {
-    domains: ['https://discobabes.store','http://localhost:8000','http://localhost:3000','https://l162c2b9-8000.euw.devtunnels.ms','http://212.132.115.241:8000','http://212.132.115.241:3000'],
+    domains: ['https://discobabes.store','http://127.0.0.1:8000','https://l162c2b9-8000.euw.devtunnels.ms','http://212.132.115.241:8000'],
     unoptimized: true,
   },
   rewrites() {

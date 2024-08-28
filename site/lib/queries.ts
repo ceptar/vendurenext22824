@@ -1,11 +1,19 @@
 // lib/queries.ts
 
 export const GET_ALL_COLLECTIONS = /* GraphQL */ `
-  query GetAllCollections {
     collections {
-      slug
+      items {
+        id
+        name
+        slug
+        parent {
+          id
+          name
+          slug
+        }
+      }
     }
-  }
+
 `;
 
 export const GET_COLLECTION_PRODUCTS = /* GraphQL */ `

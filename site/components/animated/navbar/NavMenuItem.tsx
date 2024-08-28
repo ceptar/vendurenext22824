@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import React, { useState } from 'react'
 
-import DiscoLightningInner from '@components/icons/DiscoLightningInner'
+import DiscoLightningOuter from '@components/icons/DiscoLightningOuter'
 import {
   arrowMotion,
   dividerMotion,
@@ -27,8 +27,10 @@ const NavMenuItem: React.FC<NavMenuItem> = ({ index, title }) => {
       whileHover="hover"
       onAnimationComplete={() => setIsLoading(false)}
     >
-      <motion.div className="py-2 flex opacity-90  items-center justify-center relative">
-        <motion.div className="mix-blend-difference " />
+      <motion.div className="py-2 flex opacity-95  items-center justify-center relative">
+        <motion.div 
+        // className="mix-blend-difference "
+         />
         <motion.span
           className="w-4"
           variants={itemContentMotion}
@@ -38,7 +40,7 @@ const NavMenuItem: React.FC<NavMenuItem> = ({ index, title }) => {
 
         <h1 className="font-logofont text-primary flex ">{title}</h1>
         <motion.div variants={arrowMotion}>
-          <DiscoLightningInner className="w-8 h-8 " />
+          <DiscoLightningOuter className="pl-2 w-8 h-8" />
         </motion.div>
       </motion.div>
       <motion.div

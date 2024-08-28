@@ -15,13 +15,13 @@ const FramerModalOverlay: React.FC<FramerModalOverlayProps> = ({ results, filter
 
   return (
     <motion.div
-      className="fixed bottom-0 h-[calc(100vh-5rem)] w-[50vw] top-[5rem] bg-black bg-opacity-85 backdrop-blur-[4px] justify-end p-8 z-50"
-      initial={{ x: '-100%' }}
+      className="fixed bottom-8 mt-8 w-screen bg-primary border-t-secondary opacity-95 backdrop-blur-[4px] justify-end z-50"
+      initial={{ y: '100%' }}
       animate={{
-        x: 0,
+        y: 0,
         transition: { duration: 1, ease: easings.easeOutQuart },
       }}
-      exit={{ x: '-100%', transition: { duration: 0.3 } }}
+      exit={{ y: '100%', transition: { duration: 0.3 } }}
     >
       <motion.div>
         <FacetValueFilters

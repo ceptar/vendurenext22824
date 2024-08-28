@@ -1,36 +1,7 @@
 import React from 'react';
 
-// Function to validate URL
-function isValidUrl(url: string): boolean {
-  try {
-    new URL(url);
-    return true;
-  } catch {
-    return false;
-  }
-}
-
-// Get baseURL based on environment
-const getBaseURL = (): string => {
-  if (typeof window !== 'undefined') {
-    // Client-side: use window.location.origin
-    return window.location.origin;
-  } else {
-    // Server-side or fallback
-    // Since `window` is not available on the server-side,
-    // return a default value or throw an error
-    // For server-side, you may need to handle it differently based on your setup
-    return 'http://localhost:8000'; // Provide a sensible default or throw an error
-  }
-};
-
 // Use a fallback URL if environment variable is not set
-const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL || getBaseURL();
-
-// Ensure baseURL is valid
-if (!baseURL || !isValidUrl(baseURL)) {
-  throw new Error(`Invalid baseURL: ${baseURL}`);
-}
+const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 // Append the API path to the baseURL
 const API_URL = `${baseURL}/vendure-shop-api`;

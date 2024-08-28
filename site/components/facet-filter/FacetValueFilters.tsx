@@ -39,11 +39,11 @@ export function FacetValueFilters(props: {
   }, {} as { [key: string]: FacetValueResult[] })
 
   return (
-    <div style={{ marginTop: '8px' }}>
+    <div style={{ marginTop: '24px', padding: '8px' }}>
       {results.length > 0 ? (
         Object.keys(groupedFacets).map((group) => (
-          <div key={group} style={{ marginBottom: '8px' }}>
-            <h4 style={{ marginBottom: '4px' }}>{group}</h4>{' '}
+          <div key={group} style={{ paddingBottom: '24px'}}>
+            <h3 style={{ marginBottom: '16px', textTransform: 'uppercase', fontSize: '14px', letterSpacing: '0.2em', fontWeight: 'bolder' }}>{group}</h3>{' '}
             {/* Group heading */}
             <div
               style={{
@@ -58,19 +58,19 @@ export function FacetValueFilters(props: {
                   onClick={() => onTagClick(f.facetValue.id)}
                   style={{
                     cursor: 'pointer',
-                    border: checkedFacets.includes(f.facetValue.id)
-                      ? '2px solid #007BFF'
-                      : '2px solid #ccc',
-                    borderRadius: '4px',
-                    padding: '2px 4px',
+            border: checkedFacets.includes(f.facetValue.id)
+                ? '1px solid var(--text-primary)'
+          : '1px solid var(--text-primary)',
+                    borderRadius: '50px',
+                    padding: '2px 6px',
                     backgroundColor: checkedFacets.includes(f.facetValue.id)
-                      ? '#E0F7FF'
-                      : '#f5f5f5',
+                      ? 'var(--discored)'
+                      : 'var(--primary)',
                     color: checkedFacets.includes(f.facetValue.id)
-                      ? '#007BFF'
-                      : '#333',
+                      ? 'var(--secondary)'
+                      : 'var(--text-primary)',
                     fontWeight: checkedFacets.includes(f.facetValue.id)
-                      ? '600'
+                      ? '300'
                       : '300',
                     transition: 'all 0.2s ease',
                   }}
