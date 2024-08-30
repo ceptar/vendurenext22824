@@ -1,6 +1,7 @@
+import * as React from 'react'
 import commerce from '@lib/api/commerce'
 import { GET_COLLECTION_PRODUCTS } from '@lib/queries'
-import { query } from '@components/utils/client'
+import { query, useQuery } from '@components/utils/clientOne'
 import { Layout } from '@components/common'
 import { ProductCard } from '@components/product'
 import { Grid, Marquee, Hero } from '@components/ui'
@@ -15,7 +16,7 @@ export async function getStaticProps({
 
   // Fetch products (these could be general products)
   const productsPromise = commerce.getAllProducts({
-    variables: { first: 6 },
+    variables: { last: 6 },
     config,
     preview,
     ...({ featured: true } as any),
@@ -45,6 +46,21 @@ export async function getStaticProps({
 export default function Home({
   products,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+
+  const [slug, setSlug] = React.useState('featured-items');
+  const { data, loading, error } = useQuery(
+    GET_COLLECTION_PRODUCTS,
+    {
+      slug: slug,
+      skip: 0,
+      take: 10,
+    },
+    [slug]
+  );
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error : {error.message}</p>;
+
   return (
     <>
       <div className="bg-hero" aria-label="[hero1]">
@@ -68,20 +84,18 @@ export default function Home({
       <div className="w-[100vw] h-[calc(100vh-5rem)] relative"></div>
 
       <Grid className="mt-[5rem]" variant="default">
-        {products.slice(0, 3).map((product: any, i: number) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            imgProps={{
-              alt: product.name,
-              width: i === 0 ? 734 : 365,
-              height: i === 0 ? 1322 : 660,
-              priority: true,
-            }}
-          />
-        ))}
+      {data.search.items.map(({ productName, slug, productAsset }) => (          
+        <div key={productName}>
+        <h3>{productName}</h3>
+        <img
+          src={`${productAsset.preview}?preset=tiny`}
+          alt={productName}
+        />
+      </div>
+    ))}
+
       </Grid>
-      <Marquee className="mt-[5rem]" variant="secondary">
+      {/* <Marquee className="mt-[5rem]" variant="secondary">
         {products.slice(0, 3).map((product: any, i: number) => (
           <ProductCard key={product.id} product={product} variant="slim" />
         ))}
@@ -107,7 +121,7 @@ export default function Home({
         {products.slice(3).map((product: any, i: number) => (
           <ProductCard key={product.id} product={product} variant="slim" />
         ))}
-      </Marquee>
+      </Marquee> */}
       {/* <CollectionTree /> */}
       {/* <HomeAllProductsGrid
         newestProducts={products}

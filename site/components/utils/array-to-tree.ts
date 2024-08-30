@@ -7,7 +7,7 @@ export type TreeNode<T extends HasParent> = T & {
 }
 
 export type RootNode<T extends HasParent> = {
-  id?: string
+  // id?: string
   children: Array<TreeNode<T>>
 }
 
@@ -49,5 +49,5 @@ export function arrayToTree<T extends HasParent>(nodes: T[]): RootNode<T> {
   }
 
   // Return the constructed tree
-  return { id: undefined, children: topLevelNodes }
+  return { children: topLevelNodes }
 }

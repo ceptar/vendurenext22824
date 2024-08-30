@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useQuery } from '@components/utils/client'
+import { useQuery } from '@components/utils/clientTwo'
 import NavMenu from '@components/animated/navbar/NavMenu'
 import { MenuToggle } from '@components/animated/navbar/Toggle'
 import { motion, AnimatePresence, useCycle } from 'framer-motion'
@@ -54,7 +54,7 @@ export default function MenuSidebarView() {
       animate={isOpen ? "open" : "closed"}
       custom="100%"
     >
-   <section className="relative flex flex-row-reverse">
+   <section className="flex flex-row-reverse">
 
             <AnimatePresence>
        {isOpen && <NavMenu treeData={treeData} />}

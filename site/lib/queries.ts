@@ -16,57 +16,45 @@ export const GET_ALL_COLLECTIONS = /* GraphQL */ `
 
 `;
 
-export const GET_COLLECTION_PRODUCTS = /* GraphQL */ `
-  query GetCollectionProducts($slug: String!, $skip: Int!, $take: Int!) {
-    collection(slug: $slug) {
+export const GET_COLLECTION_PRODUCTS = /*GraphQL*/ `
+query GetCollectionProducts($slug: String!, $skip: Int!, $take: Int!) {
+  collection(slug: $slug) {
+    id
+    name
+    description
+    featuredAsset {
       id
-      name
-      description
-      featuredAsset {
+      preview
+    }
+  }
+  search(
+    input: {
+      collectionSlug: $slug,
+      groupByProduct: true,
+      skip: $skip,
+      take: $take }
+  ) {
+    totalItems
+    items {
+      productName
+      slug
+      productAsset {
         id
         preview
       }
-    }
-    search(
-      input: {
-        collectionSlug: $slug,
-        groupByProduct: true,
-        skip: $skip,
-        take: $take
-      }
-    ) {
-      totalItems
-      facetValues {
-        count
-        facetValue {
-          id
-          name
-          facet {
-            id
-            name
-          }
+      priceWithTax {
+        ... on SinglePrice {
+          value
+        }
+        ... on PriceRange {
+          min
+          max
         }
       }
-      items {
-        productName
-        slug
-        productAsset {
-          id
-          preview
-        }
-        priceWithTax {
-          ... on SinglePrice {
-            value
-          }
-          ... on PriceRange {
-            min
-            max
-          }
-        }
-        currencyCode
-      }
+      currencyCode
     }
   }
+}
 `;
 
 export const SEARCH_PRODUCTS = /* GraphQL */ `
@@ -85,6 +73,7 @@ export const SEARCH_PRODUCTS = /* GraphQL */ `
         }
       }
       items {
+        id
         productName
         slug
         productAsset {
