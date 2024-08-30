@@ -59,7 +59,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ treeData }) => {
   return (
     <motion.div
 
-      className="absolute h-[calc(screen-80px)] top-[52px] pt-24 w-screen flex flex-col justify-end z-50"
+      className="absolute top-[80px] pt-4 w-screen flex flex-col bg-secondary opacity-85 backdrop-blur-md justify-start z-50"
       initial={{ x: '-100%' }}
       animate={{
         x: 0,
@@ -68,7 +68,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ treeData }) => {
       exit={{ x: '-100%', transition: { duration: 0.3 } }}
     >
       <motion.ul
-      className="bg-primary opacity-90 backdrop-blur-md"
+      className="bg-primary"
         exit={{ opacity: 0, transition: { duration: 0 } }}
       >
         {treeData.children.map((node, idx) => (

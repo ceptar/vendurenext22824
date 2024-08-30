@@ -54,7 +54,7 @@ export default function MenuSidebarView() {
       animate={isOpen ? "open" : "closed"}
       custom="100%"
     >
-   <section className="relative flex flex-row-reverse">
+   <section className="flex flex-row-reverse">
 
             <AnimatePresence>
        {isOpen && <NavMenu treeData={treeData} />}

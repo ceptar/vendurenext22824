@@ -27,7 +27,7 @@ const NavMenuItem: React.FC<NavMenuItem> = ({ index, title }) => {
       whileHover="hover"
       onAnimationComplete={() => setIsLoading(false)}
     >
-      <motion.div className="py-2 flex opacity-95  items-center justify-center relative">
+      <motion.div className="flex py-2 items-center justify-center relative">
         <motion.div 
         // className="mix-blend-difference "
          />

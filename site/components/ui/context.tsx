@@ -216,6 +216,6 @@ export const ManagedUIContext: FC<{ children?: ReactNode }> = ({
   children,
 }) => (
   <UIProvider>
-    <ThemeProvider>{children}</ThemeProvider>
+    <ThemeProvider attribute="class">{children}</ThemeProvider>
   </UIProvider>
 )

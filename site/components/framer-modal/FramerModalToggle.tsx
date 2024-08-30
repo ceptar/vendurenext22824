@@ -13,7 +13,7 @@ const FramerModalToggle: React.FC<FramerModalToggleProps> = ({
 
   return (
     <div
-      className="h-12 w-12 p-2 bg-primary rounded-full my-auto justify-self-center items-center flex flex-col cursor-pointer transition-all duration-300 ease-out hover:opacity-70"
+      className="h-10 w-10 p-2 bg-primary text-primary rounded-full my-auto justify-self-center items-center flex flex-col cursor-pointer transition-all duration-300 ease-out hover:opacity-70"
       onClick={() => setMenuOpen(!menuOpen)}
     >
       <DiscoFilterToggle />

@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect, useState } from 'react'
 import cn from 'clsx'
-import Image from 'next/image'
+// import Image from 'next/image'
 import Link from 'next/link'
 import s from './CartItem.module.css'
 import { useUI } from '@components/ui/context'
@@ -86,7 +86,7 @@ const CartItem = ({
       <div className="flex flex-row space-x-4 py-4">
         <div className="w-16 h-16 bg-violet relative overflow-hidden cursor-pointer">
           <Link href={`/product/${item.path}`}>
-            <Image
+            <img
               onClick={() => closeSidebarIfPresent()}
               className={s.productImage}
               width={64}

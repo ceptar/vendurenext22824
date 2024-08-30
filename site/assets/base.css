@@ -61,7 +61,7 @@
 
 :root {
   --bg-opacity: 1;
-  --primary: rgb(247, 247, 244);
+  --primary: rgb(255, 255, 255);
   --primary-2: #f7f7f4;
   --secondary: #111;
   --secondary-2: rgb(17, 17, 17);
@@ -106,8 +106,8 @@
 [data-theme='dark'] {
   --primary: #111111;
   --primary-2: #111111;
-  --secondary: #f7f7f4;
-  --secondary-2: #f7f7f4;
+  --secondary: rgb(255, 255, 255);
+  --secondary-2: rgb(249, 246, 248);
   --hover: rgba(255, 255, 255, 0.075);
   --hover-1: rgba(255, 255, 255, 0.15);
   --hover-2: rgba(255, 255, 255, 0.25);

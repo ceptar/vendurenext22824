@@ -6,10 +6,13 @@ import { motion } from 'framer-motion';
 import s from './Navbar.module.css';
 
 const NavbarRoot: FC<{ children?: ReactNode }> = ({ children }) => {
-  const { theme } = useTheme(); // Use the hook to get the current theme
+  const { theme, resolvedTheme } = useTheme(); // Use resolvedTheme to get the correct theme value
   const [scrollY, setScrollY] = useState(0);
+  const [mounted, setMounted] = useState(false); // State to check if component has mounted
 
   useEffect(() => {
+    setMounted(true); // Set the component as mounted when it's loaded
+
     const handleScroll = throttle(() => {
       const { scrollTop } = document.documentElement;
       setScrollY(scrollTop);
@@ -23,8 +26,11 @@ const NavbarRoot: FC<{ children?: ReactNode }> = ({ children }) => {
 
   const bgOpacity = scrollY < 48 ? scrollY / 48 : 1;
 
-  // Determine the background color based on the theme
-  const baseColor = theme === 'dark' ? '17, 17, 17' : '247, 247, 244'; // Dark or Light RGB
+  // Determine the background color based on the resolved theme
+  const baseColor = resolvedTheme === 'dark' ? '17, 17, 17' : '255, 255, 255'; // Dark or Light RGB
+
+  // Only render once the theme is mounted to avoid mismatch
+  if (!mounted) return null;
 
   return (
     <motion.div

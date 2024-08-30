@@ -250,7 +250,7 @@ export default function Slug(){
                       : 'Price N/A'}
                   </div>
                 </div>
-                <div className="text-xl p-1 text-discogray uppercase tracking-wider font-fw300 whitespace-nowrap overflow-hidden">
+                <div className="text-xl p-1 text-primary uppercase tracking-wider font-fw300 whitespace-nowrap overflow-hidden">
                   {productName}
                 </div>
               </Link>
@@ -261,7 +261,7 @@ export default function Slug(){
 
 
         )}
-                    </div>
+  </div>
 </div>
   )
 }

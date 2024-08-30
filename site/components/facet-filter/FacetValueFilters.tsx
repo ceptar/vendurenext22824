@@ -43,7 +43,7 @@ export function FacetValueFilters(props: {
       {results.length > 0 ? (
         Object.keys(groupedFacets).map((group) => (
           <div key={group} style={{ paddingBottom: '24px'}}>
-            <h3 style={{ marginBottom: '16px', textTransform: 'uppercase', fontSize: '14px', letterSpacing: '0.2em', fontWeight: 'bolder' }}>{group}</h3>{' '}
+            <h3 style={{ marginLeft: '6px', marginBottom: '24px', textTransform: 'uppercase', fontSize: '16px', letterSpacing: '0.3em', fontWeight: 'bolder' }}>{group}</h3>{' '}
             {/* Group heading */}
             <div
               style={{
@@ -64,11 +64,11 @@ export function FacetValueFilters(props: {
                     borderRadius: '50px',
                     padding: '2px 6px',
                     backgroundColor: checkedFacets.includes(f.facetValue.id)
-                      ? 'var(--discored)'
+                      ? 'var(--secondary)'
                       : 'var(--primary)',
                     color: checkedFacets.includes(f.facetValue.id)
-                      ? 'var(--secondary)'
-                      : 'var(--text-primary)',
+                      ? 'var(--primary)'
+                      : 'var(--secondary)',
                     fontWeight: checkedFacets.includes(f.facetValue.id)
                       ? '300'
                       : '300',

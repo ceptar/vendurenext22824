@@ -15,7 +15,7 @@ const FramerModalOverlay: React.FC<FramerModalOverlayProps> = ({ results, filter
 
   return (
     <motion.div
-      className="fixed bottom-8 mt-8 w-screen bg-primary border-t-secondary opacity-95 backdrop-blur-[4px] justify-end z-50"
+      className="fixed bottom-0 right-[80px] bg-primary justify-end z-50"
       initial={{ y: '100%' }}
       animate={{
         y: 0,
@@ -23,6 +23,7 @@ const FramerModalOverlay: React.FC<FramerModalOverlayProps> = ({ results, filter
       }}
       exit={{ y: '100%', transition: { duration: 0.3 } }}
     >
+      <div className="border-[8px] border-secondary">
       <motion.div>
         <FacetValueFilters
           results={results} // Use the received results prop
@@ -30,7 +31,9 @@ const FramerModalOverlay: React.FC<FramerModalOverlayProps> = ({ results, filter
           updateFilterIds={setFilterIds} // Use the received setFilterIds function
         />
       </motion.div>
+      </div>
     </motion.div>
+
   )
 }
 
