@@ -1,6 +1,8 @@
 import commerce from '@lib/api/commerce'
 import { GET_COLLECTION_PRODUCTS } from '@lib/queries'
-import { query } from '@components/utils/client'
+import { useQuery, query } from '@components/utils/client'
+import GetOneCollectionsProducts from '@components/collections/oneCollectionsProducts'
+
 import { Layout } from '@components/common'
 import { ProductCard } from '@components/product'
 import { Grid, Marquee, Hero } from '@components/ui'
@@ -65,7 +67,15 @@ export default function Home({
           </div>
         </div>
       </div>
-      <div className="w-[100vw] h-[calc(100vh-5rem)] relative"></div>
+      <div className="w-[100vw] h-[calc(100vh-5rem)] relative">
+      
+      
+      
+      <GetOneCollectionsProducts />
+      
+      
+      
+      </div>
 
       <Grid className="mt-[5rem]" variant="default">
         {products.slice(0, 3).map((product: any, i: number) => (

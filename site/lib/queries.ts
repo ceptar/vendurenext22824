@@ -13,7 +13,6 @@ export const GET_ALL_COLLECTIONS = /* GraphQL */ `
         }
       }
     }
-
 `;
 
 export const GET_COLLECTION_PRODUCTS = /* GraphQL */ `
@@ -104,4 +103,45 @@ export const SEARCH_PRODUCTS = /* GraphQL */ `
       }
     }
   }
+`;
+
+export const GET_ONE_COLLECTIONS_PRODUCTS = /*GraphQL*/ `
+query GetOneCollectionsProducts($slug: String!, $skip: Int!, $take: Int!) {
+  collection(slug: $slug) {
+    id
+    name
+    description
+    featuredAsset {
+      id
+      preview
+    }
+  }
+  search(
+    input: {
+      collectionSlug: $slug,
+      groupByProduct: true,
+      skip: $skip,
+      take: $take }
+  ) {
+    totalItems
+    items {
+      productName
+      slug
+      productAsset {
+        id
+        preview
+      }
+      priceWithTax {
+        ... on SinglePrice {
+          value
+        }
+        ... on PriceRange {
+          min
+          max
+        }
+      }
+      currencyCode
+    }
+  }
+}
 `;
