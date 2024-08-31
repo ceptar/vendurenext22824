@@ -2,6 +2,37 @@ import * as React from 'react';
 import { query, useQuery } from '@components/utils/client';
 import { GET_ONE_COLLECTIONS_PRODUCTS } from '@lib/queries';
 
+
+interface ProductAsset {
+    id: string;
+    preview: string;
+  }
+  
+interface PriceWithTax {
+    value?: number;
+    min?: number;
+    max?: number;
+  }
+  
+interface ProductItem {
+    productName: string;
+    slug: string;
+    productAsset: ProductAsset;
+    priceWithTax: PriceWithTax;
+    currencyCode: string;
+  }
+  
+interface Collection {
+    id: string;
+    name: string;
+    description: string;
+    featuredAsset?: ProductAsset | null;
+  }
+  
+interface SearchResults {
+    totalItems: number;
+    items: ProductItem[];
+  }
 export default function GetOneCollectionsProducts() {
  
     const { data, loading, error } = useQuery(
