@@ -1,12 +1,9 @@
 import React from 'react';
 
-// Use a fallback URL if environment variable is not set
-const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL;
-
 // Append the API path to the baseURL
-const API_URL = `${baseURL}/vendure-shop-api`;
+const API_URL = `https://discobabes.store/shop-api`;
 
-export { baseURL, API_URL };
+export { API_URL };
 
 let languageCode: string | undefined;
 let channelToken: string | undefined;

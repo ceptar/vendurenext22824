@@ -12,7 +12,7 @@ interface Props {
   className?: string
   product: Product
   noNameTag?: boolean
-  imgProps?: Omit<ImageProps, 'src' | 'layout' | 'placeholder' | 'blurDataURL'>
+  imgProps?: Omit<imgProps, 'src' | 'layout' | 'placeholder' | 'blurDataURL'>
   variant?: 'default' | 'slim' | 'simple'
 }
 
@@ -49,13 +49,11 @@ const ProductCard: FC<Props> = ({
             <span>{product.name}</span>
           </div>
           {product?.images && (
-            <Image
-              quality="85"
+            <img
               src={product.images[0]?.url || placeholderImg}
               alt={product.name || 'Product Image'}
-              height={320}
-              width={320}
-              unoptimized={true}
+              height='auto'
+              width={500}
               {...imgProps}
             />
           )}
@@ -83,13 +81,12 @@ const ProductCard: FC<Props> = ({
           )}
           <div className={s.imageContainer}>
             {product?.images && (
-              <Image
+              <img
                 alt={product.name || 'Product Image'}
                 className={s.productImage}
                 src={product.images[0]?.url || placeholderImg}
-                height={540}
-                width={540}
-                quality="85"
+                height='auto'
+                width={1000}
                 {...imgProps}
               />
             )}
@@ -112,13 +109,12 @@ const ProductCard: FC<Props> = ({
           />
           <div className={s.imageContainer}>
             {product?.images && (
-              <Image
+              <img
                 alt={product.name || 'Product Image'}
                 className={s.productImage}
                 src={product.images[0]?.url || placeholderImg}
-                height={540}
-                width={540}
-                quality="85"
+                height='auto'
+                width={1500}
                 {...imgProps}
               />
             )}

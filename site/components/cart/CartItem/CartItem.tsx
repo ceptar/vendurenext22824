@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect, useState } from 'react'
 import cn from 'clsx'
-// import Image from 'next/image'
+// 
 import Link from 'next/link'
 import s from './CartItem.module.css'
 import { useUI } from '@components/ui/context'

@@ -76,7 +76,6 @@ export default function Home({
               alt: product.name,
               width: i === 0 ? 734 : 365,
               height: i === 0 ? 1322 : 660,
-              priority: true,
             }}
           />
         ))}

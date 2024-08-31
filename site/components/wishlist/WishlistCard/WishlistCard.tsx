@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 import cn from 'clsx'
 import Link from 'next/link'
-import Image from 'next/image'
+
 import s from './WishlistCard.module.css'
 import { Trash } from '@components/icons'
 import { Button, Text } from '@components/ui'
@@ -63,7 +63,7 @@ const WishlistCard: React.FC<{
   return (
     <div className={cn(s.root, { 'opacity-75 pointer-events-none': removing })}>
       <div className={s.imageWrapper}>
-        <Image
+        <img
           width={230}
           height={230}
           src={product.images[0]?.url || placeholderImg}
