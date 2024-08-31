@@ -52,8 +52,7 @@ export default function GetOneCollectionsProducts() {
       <div>
         <h1>{data.collection.name}</h1>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
-          {data.search.items.map(({ productName, slug, productAsset }) => (
-            <div key={productName}>
+        {data?.search.items.map(({ productName, slug, productAsset }: ProductItem) => (            <div key={productName}>
               <h3>{productName}</h3>
               <img
                 src={`${productAsset.preview}?preset=tiny`}
