@@ -64,7 +64,7 @@ console.log('featured', data);
           <div className="mb-32 mr-auto sm:w-full ">
             <div className="pr-[1.6rem] w-[80vw] md:w-[calc(50vw-0.8rem)]">
               <div className="filter p-[0.8rem] mix-blend-lighten border-[1px] border-secondary backdrop-blur-[4px]">
-                <div className="filter p-[0.8rem] bg-primary bg-opacity-100 mix-blend-lighten border-[1px] border-secondary backdrop-blur-[4px]">
+                <div className="filter p-[0.8rem] bg-primary bg-opacity-100 mix-blend-lighten backdrop-blur-[4px]">
                   <span className="font-fw300 tracking-[0.08em] uppercase text-4xl sm:text-5xl lg:text-6xl xl:text-7xl">
                     <p className="py-1">life's too short</p>
                     <p>to wear</p>

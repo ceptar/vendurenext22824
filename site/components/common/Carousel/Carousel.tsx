@@ -1,5 +1,4 @@
 import React, {
-  MouseEvent as ReactMouseEvent,
   useRef,
   useState,
   useEffect,
@@ -50,10 +49,9 @@ export default function Carousel({ featuredItems }: { featuredItems: ProductItem
     stiffness: 150,
   });
 
-  // Updated to accept only the relevant properties from PanInfo
   const handleDragSnap = (
-    _: ReactMouseEvent,
-    { offset, velocity }: Pick<PanInfo, 'offset' | 'velocity'>, // Using TypeScript's Pick utility to define the needed properties
+    _: MouseEvent | TouchEvent | PointerEvent,
+    { offset, velocity }: Pick<PanInfo, 'offset' | 'velocity'>, 
   ) => {
     if (!carouselRef.current || !containerRef.current) return;
 
@@ -122,12 +120,13 @@ export default function Carousel({ featuredItems }: { featuredItems: ProductItem
     }
   };
 
-  const handleDragEnd = (event: ReactMouseEvent, info: PanInfo) => {
-    handleDragSnap(event, info); // Passing the full PanInfo object
+  // Update event type to match the expected type
+  const handleDragEnd = (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+    handleDragSnap(event, info); 
     setIsDragging(false); // Set isDragging to false when drag ends
   };
 
-  const disableDragClick = (e: ReactMouseEvent) => {
+  const disableDragClick = (e: React.MouseEvent) => {
     if (isDragging) {
       e.preventDefault();
       e.stopPropagation();
@@ -150,7 +149,7 @@ export default function Carousel({ featuredItems }: { featuredItems: ProductItem
     controls.set({ x: -calcX(currIndex) });
   }, [currIndex, controls]);
 
-  const handleDrag = (event: ReactMouseEvent, info: PanInfo) => {
+  const handleDrag = (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     const { offset } = info;
     if (!containerRef.current || !carouselRef.current) return;
 
@@ -194,8 +193,8 @@ export default function Carousel({ featuredItems }: { featuredItems: ProductItem
           stiffness: 400,
         }}
         onDragStart={() => setIsDragging(true)}
-        onDragEnd={handleDragEnd}
-        onDrag={handleDrag}
+        onDragEnd={handleDragEnd} // Updated type for event
+        onDrag={handleDrag} // Updated type for event
         style={{
           display: 'flex',
           gap: GAP,
