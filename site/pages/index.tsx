@@ -1,52 +1,62 @@
 import commerce from '@lib/api/commerce'
-import { GET_COLLECTION_PRODUCTS } from '@lib/queries'
-import { useQuery, query } from '@components/utils/client'
-import GetOneCollectionsProducts from '@components/collections/oneCollectionsProducts'
-
-import { Layout } from '@components/common'
-import { ProductCard } from '@components/product'
-import { Grid, Marquee, Hero } from '@components/ui'
-import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
+import { useQuery } from '@components/utils/client';
+import { GET_ONE_COLLECTIONS_PRODUCTS } from '@lib/queries';
+// import { Carousel } from '@components/ui'; // Assume this is where your Carousel component is located
+import GetOneCollectionsProducts from '@components/collections/oneCollectionsProducts';
+import Carousel from '@components/common/Carousel/Carousel';
+import { Layout } from '@components/common';
+import { ProductCard } from '@components/product';
+import { Grid, Marquee, Hero } from '@components/ui';
+import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 
 export async function getStaticProps({
   preview,
   locale,
   locales,
 }: GetStaticPropsContext) {
-  const config = { locale, locales }
+  const config = { locale, locales };
 
-  // Fetch products (these could be general products)
   const productsPromise = commerce.getAllProducts({
     variables: { first: 6 },
     config,
     preview,
     ...({ featured: true } as any),
-  })
+  });
 
+  const pagesPromise = commerce.getAllPages({ config, preview });
+  const siteInfoPromise = commerce.getSiteInfo({ config, preview });
 
-  // Fetch other site information
-  const pagesPromise = commerce.getAllPages({ config, preview })
-  const siteInfoPromise = commerce.getSiteInfo({ config, preview })
-
-  const { products } = await productsPromise
-  const { pages } = await pagesPromise
-  const { categories, brands } = await siteInfoPromise
+  const { products } = await productsPromise;
+  const { pages } = await pagesPromise;
+  const { categories, brands } = await siteInfoPromise;
 
   return {
     props: {
       products,
-      featured: true, // Pass the featured items
+      featured: true,
       categories,
       brands,
       pages,
     },
     revalidate: 60,
-  }
+  };
 }
 
 export default function Home({
   products,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  // Fetch the collection products
+  const { data, loading, error } = useQuery(GET_ONE_COLLECTIONS_PRODUCTS, {
+    slug: 'featured-items',
+    skip: 0,
+    take: 10,
+  });
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+console.log('featured', data);
+  const featuredItems = data?.search.items || [];
+
   return (
     <>
       <div className="bg-hero" aria-label="[hero1]">
@@ -71,13 +81,13 @@ export default function Home({
       
       
       
-      <GetOneCollectionsProducts />
-      
       
       
       </div>
-
-      <Grid className="mt-[5rem]" variant="default">
+      <div className="w-[calc(full-2rem)] px-[1rem] mx-auto">
+<Carousel featuredItems={featuredItems} />
+</div>
+      {/* <Grid className="mt-[5rem]" variant="default">
         {products.slice(0, 3).map((product: any, i: number) => (
           <ProductCard
             key={product.id}
@@ -111,12 +121,12 @@ export default function Home({
             }}
           />
         ))}
-      </Grid>
-      <Marquee className="mt-[5rem]" >
+      </Grid> */}
+      {/* <Marquee className="mt-[5rem]" >
         {products.slice(3).map((product: any, i: number) => (
           <ProductCard key={product.id} product={product} variant="slim" />
         ))}
-      </Marquee>
+      </Marquee> */}
       {/* <CollectionTree /> */}
       {/* <HomeAllProductsGrid
         newestProducts={products}
