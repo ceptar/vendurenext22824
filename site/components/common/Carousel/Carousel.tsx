@@ -24,10 +24,11 @@ export default function Carousel({ featuredItems }: { featuredItems: ProductItem
   const GAP = 16;
   const gapSum = (CAROUSEL_LENGTH - 1) * GAP;
 
-  const containerRef = useRef(null);
-  const carouselRef = useRef(null);
+  // Updated types for refs
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const carouselRef = useRef<HTMLDivElement | null>(null);
   const controls = useAnimation();
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState<number>(0);
 
   const currIndex = wrap(0, CAROUSEL_LENGTH, page);
 
@@ -38,12 +39,13 @@ export default function Carousel({ featuredItems }: { featuredItems: ProductItem
   const calcX = (index: number) => {
     if (!carouselRef.current) return 0;
 
+    // Now TypeScript knows carouselRef.current is of type HTMLDivElement
     const childWidth =
       (carouselRef.current.offsetWidth - gapSum) / CAROUSEL_LENGTH;
     return index * childWidth + index * GAP;
   };
 
-  const [isDragging, setIsDragging] = useState(false);
+  const [isDragging, setIsDragging] = useState<boolean>(false);
   const offsetX = useMotionValue(0);
   const animatedX = useSpring(offsetX, {
     damping: 20,
@@ -51,7 +53,7 @@ export default function Carousel({ featuredItems }: { featuredItems: ProductItem
   });
 
   const handleDragSnap = (
-    _: MouseEvent,
+    _: ReactMouseEvent, // Use ReactMouseEvent to specify the type for event
     { offset: { x: offsetX }, velocity: { x: velocityX } }: PanInfo,
   ) => {
     if (!carouselRef.current || !containerRef.current) return;
@@ -114,8 +116,6 @@ export default function Carousel({ featuredItems }: { featuredItems: ProductItem
     if (isPassedBoundaries && currIndex <= newCurrIndex) {
       const rightEdge =
         -carouselRef.current.offsetWidth + containerRef.current.offsetWidth;
-        
-        // ACHTUNG MIT ZEILE DARÜBER DEN RECHTEN RAND EINSTELLEN !!!
 
       controls.start({ x: rightEdge });
     } else {
@@ -123,23 +123,25 @@ export default function Carousel({ featuredItems }: { featuredItems: ProductItem
     }
   };
 
-  const handleDragEnd = (event, { velocity, offset }) => {
+  const handleDragEnd = (event: ReactMouseEvent, { velocity, offset }: PanInfo) => {
     handleDragSnap(event, { offset, velocity });
     setIsDragging(false); // Set isDragging to false when drag ends
   };
 
-  const disableDragClick = (e) => {
+  const disableDragClick = (e: ReactMouseEvent) => {
     if (isDragging) {
       e.preventDefault();
       e.stopPropagation();
     }
   };
 
-  const canScrollPrev = () => {
+  const canScrollPrev = (): boolean => {
     return offsetX.get() < 0;
   };
 
-  const canScrollNext = () => {
+  const canScrollNext = (): boolean => {
+    if (!containerRef.current || !carouselRef.current) return false;
+
     const containerWidth = containerRef.current.offsetWidth;
     const carouselWidth = carouselRef.current.scrollWidth;
     return offsetX.get() > -(carouselWidth - containerWidth);
@@ -149,8 +151,10 @@ export default function Carousel({ featuredItems }: { featuredItems: ProductItem
     controls.set({ x: -calcX(currIndex) });
   }, [currIndex, controls]);
 
-  const handleDrag = (event, info) => {
+  const handleDrag = (event: ReactMouseEvent, info: PanInfo) => {
     const { offset } = info;
+    if (!containerRef.current || !carouselRef.current) return;
+
     const containerWidth = containerRef.current.offsetWidth;
     const carouselWidth = carouselRef.current.scrollWidth;
     const newOffset = offsetX.get() + offset.x;
@@ -199,18 +203,15 @@ export default function Carousel({ featuredItems }: { featuredItems: ProductItem
           width: 'max-content',
         }}
       >
-{featuredItems.map((product: ProductItem, index) => (          <div
-            key={index} // Prefer using a unique product identifier here
+        {featuredItems.map((product: ProductItem, index) => (
+          <div
+            key={index} 
             className="relative flex-shrink-0 flex flex-col items-center justify-center b-radius-0 
-            w-[calc(100vw-32px)] sm:w-[calc(50vw-24px)] lg:w-[calc(25vw-16px)]
-            "
- /* darüber nach " einsetzen!         w-[calc(100vw-30px)] sm:w-[calc(50vw-25px)] lg:w-[calc(33vw-20px)] */
-//mit diesen größen lässt sich die anzahl an cards je nach zb screengröße einstellen
-
+            w-[calc(100vw-32px)] sm:w-[calc(50vw-24px)] lg:w-[calc(25vw-16px)]"
           >
-    <DiscoProductCard product={product} />
+            <DiscoProductCard product={product} />
             <Link
-              href={`/product/${product.slug}`} // Use the slug from the product data
+              href={`/product/${product.slug}`}
               style={{
                 position: 'absolute',
                 top: 0,
@@ -221,7 +222,7 @@ export default function Carousel({ featuredItems }: { featuredItems: ProductItem
                 zIndex: 1,
                 cursor: 'pointer',
               }}
-              onMouseDown={(e) => e.preventDefault()} // Prevent drag image behavior
+              onMouseDown={(e) => e.preventDefault()}
               onClick={disableDragClick}
             ></Link>
           </div>
