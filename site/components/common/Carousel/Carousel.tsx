@@ -31,11 +31,11 @@ export default function Carousel({ featuredItems }: { featuredItems: ProductItem
 
   const currIndex = wrap(0, CAROUSEL_LENGTH, page);
 
-  const paginate = (newDirection) => {
+  const paginate = (newDirection: number) => {
     setPage((p) => p + newDirection);
   };
 
-  const calcX = (index) => {
+  const calcX = (index: number) => {
     if (!carouselRef.current) return 0;
 
     const childWidth =
