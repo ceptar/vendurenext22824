@@ -2,7 +2,6 @@ import commerce from '@lib/api/commerce'
 import { useQuery } from '@components/utils/client';
 import { GET_ONE_COLLECTIONS_PRODUCTS } from '@lib/queries';
 // import { Carousel } from '@components/ui'; // Assume this is where your Carousel component is located
-import GetOneCollectionsProducts from '@components/collections/oneCollectionsProducts';
 import Carousel from '@components/common/Carousel/Carousel';
 import { Layout } from '@components/common';
 import { ProductCard } from '@components/product';
