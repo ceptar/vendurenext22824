@@ -24,7 +24,6 @@ export default function Carousel({ featuredItems }: { featuredItems: ProductItem
   const GAP = 16;
   const gapSum = (CAROUSEL_LENGTH - 1) * GAP;
 
-  // Updated types for refs
   const containerRef = useRef<HTMLDivElement | null>(null);
   const carouselRef = useRef<HTMLDivElement | null>(null);
   const controls = useAnimation();
@@ -39,7 +38,6 @@ export default function Carousel({ featuredItems }: { featuredItems: ProductItem
   const calcX = (index: number) => {
     if (!carouselRef.current) return 0;
 
-    // Now TypeScript knows carouselRef.current is of type HTMLDivElement
     const childWidth =
       (carouselRef.current.offsetWidth - gapSum) / CAROUSEL_LENGTH;
     return index * childWidth + index * GAP;
@@ -52,17 +50,18 @@ export default function Carousel({ featuredItems }: { featuredItems: ProductItem
     stiffness: 150,
   });
 
+  // Updated to accept only the relevant properties from PanInfo
   const handleDragSnap = (
-    _: ReactMouseEvent, // Use ReactMouseEvent to specify the type for event
-    { offset: { x: offsetX }, velocity: { x: velocityX } }: PanInfo,
+    _: ReactMouseEvent,
+    { offset, velocity }: Pick<PanInfo, 'offset' | 'velocity'>, // Using TypeScript's Pick utility to define the needed properties
   ) => {
     if (!carouselRef.current || !containerRef.current) return;
 
     console.clear();
 
-    const swipe = swipePower(offsetX, velocityX);
-    const isRightDirection = offsetX > 45 && velocityX >= 0;
-    const isLeftDirection = offsetX < -45 && velocityX <= 0;
+    const swipe = swipePower(offset.x, velocity.x);
+    const isRightDirection = offset.x > 45 && velocity.x >= 0;
+    const isLeftDirection = offset.x < -45 && velocity.x <= 0;
 
     const childW = (carouselRef.current.offsetWidth - gapSum) / CAROUSEL_LENGTH;
 
@@ -73,7 +72,7 @@ export default function Carousel({ featuredItems }: { featuredItems: ProductItem
       containerDiments.right > carouselDiments.right - childW;
 
     let newCurrIndex = currIndex;
-    let switchSlideBy = Math.ceil(-offsetX / (childW + GAP));
+    let switchSlideBy = Math.ceil(-offset.x / (childW + GAP));
 
     if (swipe > swipeConfidenceThreshold || isRightDirection) {
       switchSlideBy = switchSlideBy - 1;
@@ -112,7 +111,7 @@ export default function Carousel({ featuredItems }: { featuredItems: ProductItem
       }
     }
 
-    // if carousel has passed the boundaries of a container
+    // If carousel has passed the boundaries of a container
     if (isPassedBoundaries && currIndex <= newCurrIndex) {
       const rightEdge =
         -carouselRef.current.offsetWidth + containerRef.current.offsetWidth;
@@ -123,8 +122,8 @@ export default function Carousel({ featuredItems }: { featuredItems: ProductItem
     }
   };
 
-  const handleDragEnd = (event: ReactMouseEvent, { velocity, offset }: PanInfo) => {
-    handleDragSnap(event, { offset, velocity });
+  const handleDragEnd = (event: ReactMouseEvent, info: PanInfo) => {
+    handleDragSnap(event, info); // Passing the full PanInfo object
     setIsDragging(false); // Set isDragging to false when drag ends
   };
 
