@@ -5,6 +5,7 @@ import { FC } from 'react'
 import type { Product } from '@commerce/types/product'
 import usePrice from '@framework/product/use-price'
 import { WishlistButton } from '@components/wishlist'
+import ImageCarousel from '@components/common/Carousel/ImageCarousel'
 import { ProductSlider, ProductCard } from '@components/product'
 import { Container, Text } from '@components/ui'
 import { SEO } from '@components/common'
@@ -24,29 +25,14 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
 
   return (
     <>
-      <Container className="max-w-none w-full" clean>
+      <Container className="max-w-none w-full my-[5rem]" clean>
         <div className={cn(s.root, 'fit')}>
           <div className={cn(s.main, 'fit')}>
-            <ProductTag
-              name={product.name}
-              price={`${price} ${product.price?.currencyCode}`}
-              fontSize={32}
-            />
-            <div className={s.sliderContainer}>
-              <ProductSlider key={product.id}>
-                {product.images.map((image, i) => (
-                  <div key={image.url} className={s.imageContainer}>
-                    <img
-                      className={s.img}
-                      src={image.url!}
-                      alt={image.alt || 'Product Image'}
-                      width={600}
-                      height='auto'
 
-                    />
-                  </div>
-                ))}
-              </ProductSlider>
+            <div className={s.sliderContainer}>
+              <ImageCarousel
+                images={product.images} // Pass product images as props to the Carousel
+              />
             </div>
             {process.env.COMMERCE_WISHLIST_ENABLED && (
               <WishlistButton
@@ -56,12 +42,18 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
               />
             )}
           </div>
-
+          <div className={s.sidebar}>
+          <ProductTag
+              name={product.name}
+              price={`${price} ${product.price?.currencyCode}`}
+              fontSize={32}
+            />
           <ProductSidebar
             key={product.id}
             product={product}
             className={s.sidebar}
           />
+          </div>
         </div>
         <hr className="mt-7 border-accent-2" />
         <section className="py-12 px-6 mb-10">

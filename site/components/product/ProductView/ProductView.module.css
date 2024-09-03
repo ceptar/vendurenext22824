@@ -4,7 +4,7 @@
 }
 
 .main {
-  @apply relative px-0 pb-0 box-border  flex flex-col col-span-1;
+  @apply relative px-0 pb-0 box-border justify-start flex flex-row-reverse col-span-1;
   min-height: 500px;
 }
 
@@ -13,15 +13,15 @@
 }
 
 .sliderContainer {
-  @apply flex items-center justify-center overflow-x-hidden bg-violet;
+  @apply flex w-full h-auto items-center justify-center overflow-x-hidden bg-secondary;
 }
 
 .imageContainer {
-  @apply flex items-center justify-center w-full h-full relative;
+  @apply flex items-center justify-center w-full h-auto relative; /* Set width to auto and height to full */
 }
 
 .sliderContainer .img {
-  @apply object-cover h-full;
+  @apply object-contain w-auto h-full; /* Maintain the aspect ratio of images */
 }
 
 .button {
@@ -36,17 +36,17 @@
   @apply grid grid-cols-2 py-2 gap-2 md:grid-cols-4 md:gap-7;
 }
 
-@screen lg {
+@screen md {
   .root {
     @apply grid-cols-12;
   }
 
   .main {
-    @apply mx-0 col-span-8;
+    @apply mx-0 col-span-5 col-start-2;
   }
 
   .sidebar {
-    @apply col-span-4 py-6;
+    @apply col-span-5 py-6;
   }
 
   .imageContainer {
