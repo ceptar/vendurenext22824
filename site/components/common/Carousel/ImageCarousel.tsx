@@ -217,7 +217,7 @@ const ImageCarousel: React.FC<CarouselProps> = ({ images }) => {
             maxWidth: '100%',  // Image should not exceed 80vh
             width: '100%',      // Width adjusts to keep aspect ratio
             height: 'auto',     // Full height of the container
-            padding: '1.5rem', // Add padding for spacing
+            padding: '2px', // Add padding for spacing
           }}
         />
       </div>
