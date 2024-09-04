@@ -4,7 +4,7 @@ import NavMenuItem from './NavMenuItem';
 import s from './animated-navbar.module.css';
 
 interface TreeNode {
-  id: string | number;
+  id: string;
   name: string;
   isParent: boolean;
   isChild: boolean;

@@ -4,7 +4,7 @@ import { easings } from '@components/utils/animations';
 import TreeMenuItem from './TreeMenuItem';
 
 interface TreeNode {
-  id: string | number;
+  id: string;
   name: string;
   isParent: boolean;
   isChild: boolean;
@@ -24,7 +24,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ treeData }) => {
   // Use Set<string> to store the IDs as strings
   const [openMenu, setOpenMenu] = useState<Set<string>>(new Set());
 
-  const handleToggle = (id: string | number) => {
+  const handleToggle = (id: string) => {
     // Convert id to string before using it in the Set
     const idString = String(id);
     setOpenMenu(prev => {
