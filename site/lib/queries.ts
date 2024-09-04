@@ -1,5 +1,17 @@
 // lib/queries.ts
 
+export const GET_ALL_COLLECTIONS_MENU = /* GraphQL */ `
+  query GetAllCollectionsMenu {
+    collections {
+      items {
+        id
+        slug
+        name
+        parentId
+      }
+    }
+  }
+`
 export const GET_ALL_COLLECTIONS = /* GraphQL */ `
     collections {
       items {

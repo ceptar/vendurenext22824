@@ -27,18 +27,20 @@ const NavMenuItem: React.FC<NavMenuItem> = ({ index, title }) => {
       whileHover="hover"
       onAnimationComplete={() => setIsLoading(false)}
     >
-      <motion.div className="flex py-2 items-center justify-center relative">
+      <motion.div className="flex py-2 items-center justify-start relative">
         <motion.div 
         // className="mix-blend-difference "
          />
-        <motion.span
-          className="w-4"
+        {/* <motion.span
+          className="w-2"
           variants={itemContentMotion}
         >
-          {/* ({index.toLocaleString("en-US", { minimumIntegerDigits: 2 })}) */}
-        </motion.span>
+          ({index.toLocaleString("en-US", { minimumIntegerDigits: 2 })}) 
+        </motion.span> */}
 
-        <h1 className="font-logofont text-primary flex ">{title}</h1>
+        <h1 className="font-logofont text-primary flex ">
+          {title}
+          </h1>
         <motion.div variants={arrowMotion}>
           <DiscoLightningOuter className="pl-2 w-8 h-8" />
         </motion.div>

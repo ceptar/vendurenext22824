@@ -20,7 +20,7 @@ module.exports = withCommerceConfig({
     defaultLocale: 'en-US',
   },
   images: {
-    domains: ['https://discobabes.store','https://vendurenext22824-commerce.vercel.app'],
+    domains: ['https://discobabes.store'],
     unoptimized: true,
   },
   // rewrites() {

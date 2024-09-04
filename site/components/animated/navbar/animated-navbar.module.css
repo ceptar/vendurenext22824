@@ -1,9 +1,14 @@
 .parent {
-  @apply hover:opacity-70;
+  @apply hover:opacity-70 p-2;
   font-size: 3rem;
 }
 
 .child {
-  @apply ml-0;
+  @apply ml-0 px-2 py-4;
   font-size: 2rem;
+}
+
+.subMenu {
+  overflow: hidden;
+  /* Add more styles for submenu */
 }
