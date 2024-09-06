@@ -175,7 +175,6 @@ export default function Carousel({ featuredItems }: { featuredItems: ProductItem
         position: 'relative',
         display: 'flex',
         overflowX: 'hidden',
-        paddingLeft: 0, 
 
         paddingTop: 32,
         paddingBottom: 32,
@@ -205,7 +204,7 @@ export default function Carousel({ featuredItems }: { featuredItems: ProductItem
           <div
             key={index} 
             className="relative flex-shrink-0 flex flex-col items-center justify-center b-radius-0 
-            w-[calc(100vw-32px)] sm:w-[calc(50vw-24px)] lg:w-[calc(25vw-16px)]"
+            w-[calc(100vw-48px)] sm:w-[calc(50vw-32px)] lg:w-[calc(25vw-24px)]"
           >
             <DiscoProductCard product={product} />
             <Link

@@ -1,11 +1,25 @@
+.overlay {
+  @apply  absolute top-[80px] pt-4 w-[calc(screen-16px)] sm:w-[calc(50vw-32px)] flex flex-col justify-start z-50 ;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(4px);
+    /* 
+  -webkit-backdrop-filter: blur(4px); 
+  */
+}
+
+.menuItem {
+  @apply flex py-2 items-center justify-end relative mr-4;
+
+}
+
 .parent {
   @apply hover:opacity-70 p-2;
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 .child {
-  @apply ml-0 px-2 py-4;
-  font-size: 2rem;
+  @apply ml-0 px-2;
+  font-size: 1.2rem;
 }
 
 .subMenu {

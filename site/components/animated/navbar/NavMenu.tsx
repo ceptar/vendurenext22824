@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import s from './animated-navbar.module.css'
 import { AnimatePresence, motion } from 'framer-motion';
 import { easings } from '@components/utils/animations';
 import TreeMenuItem from './TreeMenuItem';
@@ -44,18 +45,17 @@ const NavMenu: React.FC<NavMenuProps> = ({ treeData }) => {
   }
 
   return (
-    <AnimatePresence>
     <motion.div
-      className="absolute top-[80px] pt-4 w-screen sm:w-[50vw] flex flex-col bg-secondary opacity-85 backdrop-blur-md justify-start z-50"
+      className={s.overlay}
       initial={{ x: '100%' }}
       animate={{
-        x: 0,
+        x: -16,
         transition: { duration: 0.5, ease: easings.easeOutQuart },
       }}
-      exit={{ x: '-100%', transition: { duration: 0.2 } }}
+      exit={{ x: '100%', transition: { duration: 0.2 } }}
     >
       <motion.ul
-        className="bg-primary"
+        className=""
         exit={{ opacity: 0, transition: { duration: 0.2 } }}
       >
         {treeData.children.map((node, idx) => (
@@ -69,7 +69,6 @@ const NavMenu: React.FC<NavMenuProps> = ({ treeData }) => {
         ))}
       </motion.ul>
     </motion.div>
-    </AnimatePresence>
   );
 };
 

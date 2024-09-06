@@ -63,7 +63,7 @@ export const itemContentMotion = {
 
 export const arrowMotion = {
   hover: {
-    rotate: -90,
+    rotate: 45,
     transition: {
       type: "spring",
       bounce: 0.5,

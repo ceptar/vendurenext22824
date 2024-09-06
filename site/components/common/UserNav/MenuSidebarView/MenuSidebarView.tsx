@@ -18,6 +18,7 @@ interface CollectionsData {
     items: Collection[]
   }
 }
+
 export default function MenuSidebarView() {
   const [isOpen, toggleOpen] = useCycle(false, true);
 
@@ -40,9 +41,14 @@ export default function MenuSidebarView() {
       custom="100%"
     >
       <section className="flex flex-row-reverse">
+        {/* The toggle button is outside AnimatePresence to ensure it always stays visible */}
+        <MenuToggle toggle={() => toggleOpen()} />
+
+        {/* AnimatePresence wraps the NavMenu to handle enter and exit animations */}
         <AnimatePresence>
-          {isOpen && <NavMenu treeData={treeData} />}
-          <MenuToggle toggle={() => toggleOpen()} />
+          {isOpen && (
+            <NavMenu treeData={treeData} key="nav-menu" />
+          )}
         </AnimatePresence>
       </section>
     </motion.nav>

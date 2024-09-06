@@ -1,6 +1,8 @@
+/*
 .fit {
-  /* min-height: calc(100vh - 88px); */
+   min-height: calc(100vh - 88px); 
 }
+*/
 
 .bg-hero {
   background-image: url('~/public/banner4fin.webp');

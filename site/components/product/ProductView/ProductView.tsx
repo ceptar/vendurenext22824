@@ -25,7 +25,7 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
 
   return (
     <>
-      <Container className="max-w-none w-full my-[5rem]" clean>
+      <Container className="max-w-none w-full my-[5rem] px-4" clean>
         <div className={cn(s.root, 'fit')}>
           <div className={cn(s.main, 'fit')}>
 
@@ -42,7 +42,9 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
               />
             )}
           </div>
-          <div className={s.sidebar}>
+          <div 
+          // className={s.sidebar}
+          >
           <ProductTag
               name={product.name}
               price={`${price} ${product.price?.currencyCode}`}
@@ -60,7 +62,7 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
           <Text variant="sectionHeading">Related Products</Text>
           <div className={s.relatedProductsGrid}>
             {relatedProducts.map((p) => (
-              <div key={p.path} className="bg-accent-0 border border-accent-2">
+              <div key={p.path} className="bg-accent-0 border border-accent-2 ">
                 <ProductCard
                   noNameTag
                   product={p}
